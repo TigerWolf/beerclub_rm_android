@@ -6,8 +6,7 @@ class RequestListener
   end
 
   def onResponse(json)
-    p json
-    # weather = Weather.new(json)
-    # @activity.update_display(weather)
+    weather = Weather.new(json)
+    @activity.update_display(weather)
   end
 end

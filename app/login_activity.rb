@@ -1,4 +1,4 @@
-class MainActivity < Android::App::Activity
+class LoginActivity < Android::App::Activity
   def onCreate(savedInstanceState)
     super
     self.requestWindowFeature(Android::View::Window::FEATURE_NO_TITLE)
@@ -23,6 +23,7 @@ class MainActivity < Android::App::Activity
     editText = findViewById(resources.getIdentifier('password','id',packageName))
     password = editText.getText.toString
     intent.putExtra("password",password)
+
     startActivity(intent)
   end
 

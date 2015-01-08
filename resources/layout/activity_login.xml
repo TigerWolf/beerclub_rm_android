@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:id="@+id/layout2"
+    android:background="@drawable/uni_gradient"
+    >
+
+    <ImageView
+        android:layout_width="257dp"
+        android:layout_height="250dp"
+        android:id="@+id/imageView"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/sub_crux_beeren"
+        android:layout_marginBottom="20dp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Username"
+        android:text="a1046136"
+        android:ems="10"
+        android:id="@+id/username"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="#ffffff"
+        android:singleLine="true"
+        android:selectAllOnFocus="true"
+        android:layout_gravity="center_horizontal" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:text="!Unified1"
+        android:singleLine="true"
+        android:selectAllOnFocus="true"
+        android:textColor="#ffffff"
+        android:ems="10"
+        android:id="@+id/password"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_horizontal" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:text="Login"
+            android:id="@+id/login_button"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/login_gradient"
+            android:textColor="#ffffff"
+            />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,97 @@
+<?xml version='1.0'?>
+<signatures version='1.0'>
+<class name="com/android/volley/AuthFailureError">
+</class>
+<class name="com/android/volley/CacheDispatcher">
+</class>
+<class name="com/android/volley/NetworkDispatcher">
+</class>
+<class name="com/android/volley/NetworkError">
+</class>
+<class name="com/android/volley/NoConnectionError">
+</class>
+<class name="com/android/volley/ParseError">
+</class>
+<class name="com/android/volley/Request$Priority">
+</class>
+<class name="com/android/volley/ServerError">
+</class>
+<class name="com/android/volley/TimeoutError">
+</class>
+<class name="com/android/volley/toolbox/ClearCacheRequest">
+</class>
+<class name="com/android/volley/toolbox/DiskBasedCache$CountingInputStream">
+</class>
+<class name="com/android/volley/toolbox/HttpClientStack$HttpPatch">
+</class>
+<class name="com/android/volley/toolbox/ImageRequest">
+</class>
+<class name="com/android/volley/toolbox/JsonArrayRequest">
+</class>
+<class name="com/android/volley/toolbox/JsonObjectRequest">
+</class>
+<class name="com/android/volley/toolbox/JsonRequest&lt;T&gt;">
+</class>
+<class name="com/android/volley/toolbox/NetworkImageView">
+</class>
+<class name="com/android/volley/toolbox/PoolingByteArrayOutputStream">
+</class>
+<class name="com/android/volley/toolbox/StringRequest">
+</class>
+<class name="com/android/volley/VolleyError">
+</class>
+<class name="com/android/volley/Cache$Entry">
+</class>
+<class name="com/android/volley/NetworkResponse">
+</class>
+<class name="com/android/volley/RequestQueue">
+</class>
+<class name="com/android/volley/Response&lt;T&gt;">
+</class>
+<class name="com/android/volley/toolbox/ByteArrayPool">
+</class>
+<class name="com/android/volley/toolbox/DiskBasedCache$1">
+</class>
+<class name="com/android/volley/toolbox/DiskBasedCache$CacheHeader">
+</class>
+<class name="com/android/volley/toolbox/HttpHeaderParser">
+</class>
+<class name="com/android/volley/toolbox/ImageLoader$BatchedImageRequest">
+</class>
+<class name="com/android/volley/toolbox/ImageLoader$ImageContainer">
+</class>
+<class name="com/android/volley/toolbox/ImageLoader">
+</class>
+<class name="com/android/volley/toolbox/Volley">
+</class>
+<class name="com/android/volley/VolleyLog$MarkerLog$Marker">
+</class>
+<class name="com/android/volley/VolleyLog$MarkerLog">
+</class>
+<class name="com/android/volley/VolleyLog">
+</class>
+<interface name="com/android/volley/Cache">
+</interface>
+<interface name="com/android/volley/Network">
+</interface>
+<interface name="com/android/volley/Request$Method">
+</interface>
+<interface name="com/android/volley/RequestQueue$RequestFilter">
+</interface>
+<interface name="com/android/volley/Response$ErrorListener">
+</interface>
+<interface name="com/android/volley/Response$Listener&lt;T&gt;">
+</interface>
+<interface name="com/android/volley/ResponseDelivery">
+</interface>
+<interface name="com/android/volley/RetryPolicy">
+</interface>
+<interface name="com/android/volley/toolbox/Authenticator">
+</interface>
+<interface name="com/android/volley/toolbox/HttpStack">
+</interface>
+<interface name="com/android/volley/toolbox/HurlStack$UrlRewriter">
+</interface>
+<interface name="com/android/volley/toolbox/ImageLoader$ImageCache">
+</interface>
+</signatures>

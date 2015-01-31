@@ -15,13 +15,13 @@
         android:src="@drawable/sub_crux_beeren"
         android:layout_marginBottom="20dp"
         />
-
+<!-- bctest -->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:hint="Username"
-        android:text="bctest"
+        android:text=""
         android:ems="10"
         android:id="@+id/username"
         android:layout_marginRight="30dp"
@@ -31,13 +31,13 @@
         android:singleLine="true"
         android:selectAllOnFocus="true"
         android:layout_gravity="center_horizontal" />
-
+<!-- FuckYeahBeer -->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:hint="Password"
-        android:text="FuckYeahBeer"
+        android:text=""
         android:singleLine="true"
         android:selectAllOnFocus="true"
         android:textColor="#ffffff"

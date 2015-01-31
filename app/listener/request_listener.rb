@@ -1,12 +1,13 @@
 class RequestListener
-  attr_accessor :activity
+  attr_accessor :activity, :responder
 
-  def initialize(activity)
+  def initialize(activity, responder)
     @activity = activity
+    @responder = responder
   end
 
   def onResponse(json)
-    weather = Weather.new(json)
-    @activity.update_display(weather)
+    beer_list = @responder.new(json)
+    @activity.update_display(beer_list)
   end
 end

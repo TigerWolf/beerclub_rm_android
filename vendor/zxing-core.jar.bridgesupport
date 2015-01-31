@@ -1,0 +1,68 @@
+<?xml version='1.0'?>
+<signatures version='1.0'>
+<class name="me/dm7/barcodescanner/core/BarcodeScannerView">
+<method name="&lt;init&gt;" type="(Landroid/content/Context;)V"/>
+<method name="&lt;init&gt;" type="(Landroid/content/Context;Landroid/util/AttributeSet;)V"/>
+<method name="setupLayout" type="()V"/>
+<method name="startCamera" type="()V"/>
+<method name="stopCamera" type="()V"/>
+<method name="getFramingRectInPreview" type="(II)Landroid/graphics/Rect;"/>
+<method name="setFlash" type="(Z)V"/>
+<method name="getFlash" type="()Z"/>
+<method name="toggleFlash" type="()V"/>
+<method name="setAutoFocus" type="(Z)V"/>
+</class>
+<class name="me/dm7/barcodescanner/core/CameraPreview">
+<method name="&lt;init&gt;" type="(Landroid/content/Context;)V"/>
+<method name="&lt;init&gt;" type="(Landroid/content/Context;Landroid/util/AttributeSet;)V"/>
+<method name="setCamera" type="(Landroid/hardware/Camera;Landroid/hardware/Camera$PreviewCallback;)V"/>
+<method name="initCameraPreview" type="()V"/>
+<method name="surfaceCreated" type="(Landroid/view/SurfaceHolder;)V"/>
+<method name="surfaceChanged" type="(Landroid/view/SurfaceHolder;III)V"/>
+<method name="surfaceDestroyed" type="(Landroid/view/SurfaceHolder;)V"/>
+<method name="showCameraPreview" type="()V"/>
+<method name="stopCameraPreview" type="()V"/>
+<method name="setupCameraParameters" type="()V"/>
+<method name="getDisplayOrientation" type="()I"/>
+<method name="setAutoFocus" type="(Z)V"/>
+<method name="access$000" type="(Lme/dm7/barcodescanner/core/CameraPreview;)Landroid/hardware/Camera;" class_method="true"/>
+<method name="access$100" type="(Lme/dm7/barcodescanner/core/CameraPreview;)Z" class_method="true"/>
+<method name="access$200" type="(Lme/dm7/barcodescanner/core/CameraPreview;)Z" class_method="true"/>
+<method name="access$300" type="(Lme/dm7/barcodescanner/core/CameraPreview;)Z" class_method="true"/>
+<method name="access$400" type="(Lme/dm7/barcodescanner/core/CameraPreview;)Ljava/lang/Runnable;" class_method="true"/>
+<method name="access$500" type="(Lme/dm7/barcodescanner/core/CameraPreview;)Landroid/os/Handler;" class_method="true"/>
+</class>
+<class name="me/dm7/barcodescanner/core/ViewFinderView">
+<method name="&lt;init&gt;" type="(Landroid/content/Context;)V"/>
+<method name="&lt;init&gt;" type="(Landroid/content/Context;Landroid/util/AttributeSet;)V"/>
+<method name="setupViewFinder" type="()V"/>
+<method name="getFramingRect" type="()Landroid/graphics/Rect;"/>
+<method name="onDraw" type="(Landroid/graphics/Canvas;)V"/>
+<method name="drawViewFinderMask" type="(Landroid/graphics/Canvas;)V"/>
+<method name="drawViewFinderBorder" type="(Landroid/graphics/Canvas;)V"/>
+<method name="drawLaser" type="(Landroid/graphics/Canvas;)V"/>
+<method name="onSizeChanged" type="(IIII)V"/>
+<method name="updateFramingRect" type="()V"/>
+</class>
+<class name="me/dm7/barcodescanner/core/BuildConfig">
+<method name="&lt;init&gt;" type="()V"/>
+</class>
+<class name="me/dm7/barcodescanner/core/CameraUtils">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="getCameraInstance" type="()Landroid/hardware/Camera;" class_method="true"/>
+<method name="isFlashSupported" type="(Landroid/hardware/Camera;)Z" class_method="true"/>
+</class>
+<class name="me/dm7/barcodescanner/core/DisplayUtils">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="getScreenResolution" type="(Landroid/content/Context;)Landroid/graphics/Point;" class_method="true"/>
+<method name="getScreenOrientation" type="(Landroid/content/Context;)I" class_method="true"/>
+</class>
+<class name="me/dm7/barcodescanner/core/CameraPreview$1">
+<method name="&lt;init&gt;" type="(Lme/dm7/barcodescanner/core/CameraPreview;)V"/>
+<method name="run" type="()V"/>
+</class>
+<class name="me/dm7/barcodescanner/core/CameraPreview$2">
+<method name="&lt;init&gt;" type="(Lme/dm7/barcodescanner/core/CameraPreview;)V"/>
+<method name="onAutoFocus" type="(ZLandroid/hardware/Camera;)V"/>
+</class>
+</signatures>

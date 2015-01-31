@@ -14,7 +14,10 @@ class LoginActivity < Android::App::Activity
   end
 
   def sendMessage(view)
-    intent = Android::Content::Intent.new(self, BeerActivity)
+    # intent = Android::Content::Intent.new(self, BeerActivity)
+    intent = Android::Content::Intent.new(self, AvaliableActivity)
+    # intent = Android::Content::Intent.new(self, ScannerActivity)
+    # intent = Android::Content::Intent.new(self, AccountActivity)
 
     editText = findViewById(resources.getIdentifier('username','id',packageName))
     username = editText.getText.toString

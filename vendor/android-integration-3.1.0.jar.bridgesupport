@@ -1,0 +1,50 @@
+<?xml version='1.0'?>
+<signatures version='1.0'>
+<class name="com/google/zxing/integration/android/IntentIntegrator">
+<method name="&lt;init&gt;" type="(Landroid/app/Activity;)V"/>
+<method name="&lt;init&gt;" type="(Landroid/app/Fragment;)V"/>
+<method name="getTitle" type="()Ljava/lang/String;"/>
+<method name="setTitle" type="(Ljava/lang/String;)V"/>
+<method name="setTitleByID" type="(I)V"/>
+<method name="getMessage" type="()Ljava/lang/String;"/>
+<method name="setMessage" type="(Ljava/lang/String;)V"/>
+<method name="setMessageByID" type="(I)V"/>
+<method name="getButtonYes" type="()Ljava/lang/String;"/>
+<method name="setButtonYes" type="(Ljava/lang/String;)V"/>
+<method name="setButtonYesByID" type="(I)V"/>
+<method name="getButtonNo" type="()Ljava/lang/String;"/>
+<method name="setButtonNo" type="(Ljava/lang/String;)V"/>
+<method name="setButtonNoByID" type="(I)V"/>
+<method name="getTargetApplications" type="()Ljava/util/Collection;"/>
+<method name="setTargetApplications" type="(Ljava/util/List;)V"/>
+<method name="setSingleTargetApplication" type="(Ljava/lang/String;)V"/>
+<method name="getMoreExtras" type="()Ljava/util/Map;"/>
+<method name="addExtra" type="(Ljava/lang/String;Ljava/lang/Object;)V"/>
+<method name="initiateScan" type="()Landroid/app/AlertDialog;"/>
+<method name="initiateScan" type="(I)Landroid/app/AlertDialog;"/>
+<method name="initiateScan" type="(Ljava/util/Collection;)Landroid/app/AlertDialog;"/>
+<method name="initiateScan" type="(Ljava/util/Collection;I)Landroid/app/AlertDialog;"/>
+<method name="startActivityForResult" type="(Landroid/content/Intent;I)V"/>
+<method name="parseActivityResult" type="(IILandroid/content/Intent;)Lcom/google/zxing/integration/android/IntentResult;" class_method="true"/>
+<method name="shareText" type="(Ljava/lang/CharSequence;)Landroid/app/AlertDialog;"/>
+<method name="shareText" type="(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Landroid/app/AlertDialog;"/>
+<method name="access$000" type="(Lcom/google/zxing/integration/android/IntentIntegrator;)Ljava/util/List;" class_method="true"/>
+<method name="access$100" type="(Lcom/google/zxing/integration/android/IntentIntegrator;)Landroid/app/Fragment;" class_method="true"/>
+<method name="access$200" type="(Lcom/google/zxing/integration/android/IntentIntegrator;)Landroid/app/Activity;" class_method="true"/>
+<method name="access$300" type="()Ljava/lang/String;" class_method="true"/>
+</class>
+<class name="com/google/zxing/integration/android/IntentResult">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="&lt;init&gt;" type="(Ljava/lang/String;Ljava/lang/String;[BLjava/lang/Integer;Ljava/lang/String;)V"/>
+<method name="getContents" type="()Ljava/lang/String;"/>
+<method name="getFormatName" type="()Ljava/lang/String;"/>
+<method name="getRawBytes" type="()[B"/>
+<method name="getOrientation" type="()Ljava/lang/Integer;"/>
+<method name="getErrorCorrectionLevel" type="()Ljava/lang/String;"/>
+<method name="toString" type="()Ljava/lang/String;"/>
+</class>
+<class name="com/google/zxing/integration/android/IntentIntegrator$1">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/integration/android/IntentIntegrator;)V"/>
+<method name="onClick" type="(Landroid/content/DialogInterface;I)V"/>
+</class>
+</signatures>

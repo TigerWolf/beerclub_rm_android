@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity" >
+    <item android:id="@+id/action_account" android:title="@string/action_account"
+        android:orderInCategory="100" android:showAsAction="never" />
+    <item android:id="@+id/action_avaliable" android:title="@string/action_avaliable"
+        android:orderInCategory="100" android:showAsAction="never" />
+    <item android:id="@+id/action_beerlist" android:title="@string/action_beerlist"
+        android:orderInCategory="100" android:showAsAction="never" />
+    <item android:id="@+id/action_scanner" android:title="@string/action_scanner"
+        android:orderInCategory="100" android:showAsAction="never" />
+    <item android:id="@+id/action_logout" android:title="@string/action_logout"
+        android:orderInCategory="100" android:showAsAction="never" />
+</menu>

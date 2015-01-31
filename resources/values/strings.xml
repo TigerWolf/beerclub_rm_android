@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="action_account">Account</string>
+  <string name="action_avaliable">Avaliable Beers</string>
+  <string name="action_scanner">Scanner</string>
+  <string name="action_logout">Logout</string>
+  <string name="action_beerlist">Beer List</string>
+
+</resources>

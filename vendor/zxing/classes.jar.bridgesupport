@@ -1,0 +1,18 @@
+<?xml version='1.0'?>
+<signatures version='1.0'>
+<class name="me/dm7/barcodescanner/zxing/ZXingScannerView">
+<method name="&lt;init&gt;" type="(Landroid/content/Context;)V"/>
+<method name="&lt;init&gt;" type="(Landroid/content/Context;Landroid/util/AttributeSet;)V"/>
+<method name="setFormats" type="(Ljava/util/List;)V"/>
+<method name="setResultHandler" type="(Lme/dm7/barcodescanner/zxing/ZXingScannerView$ResultHandler;)V"/>
+<method name="getFormats" type="()Ljava/util/Collection;"/>
+<method name="onPreviewFrame" type="([BLandroid/hardware/Camera;)V"/>
+<method name="buildLuminanceSource" type="([BII)Lcom/google/zxing/PlanarYUVLuminanceSource;"/>
+</class>
+<class name="me/dm7/barcodescanner/zxing/BuildConfig">
+<method name="&lt;init&gt;" type="()V"/>
+</class>
+<interface name="me/dm7/barcodescanner/zxing/ZXingScannerView$ResultHandler">
+<method name="handleResult" type="(Lcom/google/zxing/Result;)V"/>
+</interface>
+</signatures>

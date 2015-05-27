@@ -5,6 +5,15 @@ class LoginActivity < Android::App::Activity
     # setContentView(Android::R.layout.activity_login)
     layoutId = resources.getIdentifier('activity_login', 'layout', packageName)
     self.contentView = layoutId
+
+    if RUBYMOTION_ENV != "release"
+      username_field = findViewById(resources.getIdentifier('username', 'id', packageName))
+      username_field.setText "a1673450"
+
+      password_field = findViewById(resources.getIdentifier('password', 'id', packageName))
+      password_field.setText "<nac33841>"
+    end
+
     button = findViewById(resources.getIdentifier('login_button', 'id', packageName))
     button.setOnClickListener(self)
   end

@@ -1,0 +1,16 @@
+PATH
+  remote: /Users/a1673450/dev/volley_motion
+  specs:
+    volley_motion (0.0.6)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    rake (10.4.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  rake
+  volley_motion!

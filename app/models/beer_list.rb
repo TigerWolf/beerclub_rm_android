@@ -2,16 +2,16 @@ class BeerList
   attr_reader :beers
 
   def initialize(json)
-    keys = json.keys
+    # keys = json.keys
     output_array = Java::Util::ArrayList.new
-    array = []
+    # array = []
 
     # Not all of the keys are sequencial - hack to get around Ruby and Java incompatibility.
-    while keys.hasNext
-      array << keys.next
-    end
+    # while keys.hasNext
+      # array << keys.next
+    # end
 
-    for i in array
+    for i in 0..(json.length-1)
         value = json.get(i)
         hash = Java::Util::HashMap.new
         hash.put("name", value.getString("name"))
@@ -23,5 +23,9 @@ class BeerList
 
     @beers = output_array
 
+  end
+
+  def on_response(activity)
+    activity.update_display(self)
   end
 end

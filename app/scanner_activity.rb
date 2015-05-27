@@ -67,32 +67,36 @@ class ScannerActivity < Android::App::Activity
         p dialog
         if which == -1
             # OK
-            p "ok"
+            # p "ok"
             url = "https://beer.services.adelaide.edu.au/bc/api/account_self_serve/?format=json"
-            listener = RequestListener.new(self, Barcode)
-            error_listener = ErrorListener.new(self, Barcode)
+            success_listener = VolleyMotion::RequestListener.new(self, Barcode)
+            error_listener = VolleyMotion::ErrorListener.new(self)
 
             params = {}
             params[Java::Lang::String.new("barcode")] = Java::Lang::String.new(@barcode)
 
-            post = MyPostRequest.new(VolleyMethods::POST, url, params, listener, error_listener)
+            post = VolleyMotion::PostAuthRequest.new(url, params, success_listener, error_listener)
             post.username = @username
             post.password = @password
-            # request_queue.params = getParams
             request_queue.add(post)
-
         end
         if which == -2
-            p "cancel"
+            # p "cancel"
             # Cancel
         end
         # p dialog
         # p which
-        p "We clicked a dialog!"
+        # p "We clicked a dialog!"
+    end
+
+    def error_response(res)
+        alert = AlertHelper.new(self, AlertResponse.new)
+        alert.only_ok = true
+        alert.dialog("Error", "There was an error sending the barcode to the server. " +  res[:message])
     end
 
     def update_display(object)
-        p object
+        # p object
         alert = AlertHelper.new(self, AlertResponse.new)
         alert.only_ok = true
         alert.dialog("Submitted", "Your beer has been logged with the server." )

@@ -56,8 +56,9 @@ class BeerActivity < Android::App::Activity
   def fetch_beers
     p "fetch beers"
     url = "https://beer.services.adelaide.edu.au/bc/api/beer_list/?format=json"
-    listener = RequestListener.new(self, BeerList)
-    get = MyArrayRequest.new(VolleyMethods::GET, url, nil, listener, nil)
+    success_listener = VolleyMotion::RequestListener.new(self, BeerList)
+    error_listener = VolleyMotion::ErrorListener.new(self)
+    get = VolleyMotion::JsonArrayAuthRequest.new(url, success_listener, error_listener)
     get.username = @username
     get.password = @password
     request_queue.add(get)

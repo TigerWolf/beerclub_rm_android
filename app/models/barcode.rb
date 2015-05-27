@@ -5,4 +5,8 @@ class Barcode
     p json.class
   end
 
+  def on_response(activity)
+    activity.update_display(self)
+  end
+
 end

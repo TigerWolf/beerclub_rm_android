@@ -18,7 +18,8 @@ class AvaliableActivity < Android::App::Activity
     @list = findViewById(resources.getIdentifier('listView', 'id', packageName))
     @list.adapter = adapter
     @list.onItemClickListener = self
-    fetch_beers
+    # fetch_beers
+    get_token
   end
 
   def adapter
@@ -37,10 +38,40 @@ class AvaliableActivity < Android::App::Activity
     # startActivity(intent)
   end
 
+  def get_token
+    url = "https://beer.services.adelaide.edu.au/o/token/"
+    success_listener = VolleyMotion::RequestListener.new(self, Token)
+    error_listener = VolleyMotion::ErrorListener.new(self)
+
+    client_id = "M=B;vpY=6!qypBBl0qYaRf2;e9ROWqq3?v3KF0iq"
+    client_secret = "BgRZgZnCz0QYE=P8a2t1R-6d6RGb=qFcwZOsNKSI;ZDA!5ZPCfZdo5-09!iDFX2cnG1Jr?yEPyMUAa3-rJ_oexj?W5?-R8?hrR67=.Zf7PC0vK;95g!Li:BZMTMzv:nK"
+
+    params = {}
+    params[Java::Lang::String.new("grant_type")] = Java::Lang::String.new("password")
+    params[Java::Lang::String.new("username")] = Java::Lang::String.new(@username)
+    params[Java::Lang::String.new("password")] = Java::Lang::String.new(@password)
+    params[Java::Lang::String.new("client_id")] = Java::Lang::String.new(client_id)
+    params[Java::Lang::String.new("client_secret")] = Java::Lang::String.new(client_secret)
+
+    # params[Java::Lang::String.new("client_id")] = Java::Lang::String.new("M=B;vpY=6!qypBBl0qYaRf2;e9ROWqq3?v3KF0iq")
+
+    post = VolleyMotion::PostRequest.new(url, params, success_listener, error_listener)
+    # post.username = client_id
+    # post.password = client_secret
+    request_queue.add(post)
+  end
+
+  def save_token(object)
+      alert = AlertHelper.new(self, AlertResponse.new)
+      alert.only_ok = true
+      alert.dialog("Submitted", "Your beer has been logged with the server." )
+  end
+
   def fetch_beers
     url = "https://beer.services.adelaide.edu.au/bc/api/account_unique_available/?format=json"
-    listener = RequestListener.new(self, BeerList)
-    get = MyArrayRequest.new(VolleyMethods::GET, url, nil, listener, nil)
+    success_listener = VolleyMotion::RequestListener.new(self, BeerList)
+    error_listener = VolleyMotion::ErrorListener.new(self)
+    get = VolleyMotion::JsonArrayAuthRequest.new(url, success_listener, error_listener)
     get.username = @username
     get.password = @password
     p "beers requested"
@@ -65,6 +96,10 @@ class AvaliableActivity < Android::App::Activity
     my_hash.put(Java::Lang::String.new("my_array"), beer_list)
     row_layout = resources.getIdentifier('row_layout', 'layout', packageName)
     @list.adapter = BeerListAdapter.new(self, my_hash)
+  end
+
+  def error_response(res)
+
   end
 
   def onOptionsItemSelected item

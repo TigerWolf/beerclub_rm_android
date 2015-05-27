@@ -6,23 +6,124 @@
 <method name="getNbDatablocks" type="()I"/>
 <method name="isCompact" type="()Z"/>
 </class>
+<class name="com/google/zxing/aztec/AztecReader">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
+<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
+<method name="reset" type="()V"/>
+</class>
+<class name="com/google/zxing/aztec/AztecWriter">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;II)Lcom/google/zxing/common/BitMatrix;"/>
+<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;IILjava/util/Map;)Lcom/google/zxing/common/BitMatrix;"/>
+</class>
+<class name="com/google/zxing/aztec/decoder/Decoder$1">
+</class>
 <class name="com/google/zxing/aztec/decoder/Decoder$Table">
 <method name="values" type="()[Lcom/google/zxing/aztec/decoder/Decoder$Table;" class_method="true"/>
 <method name="valueOf" type="(Ljava/lang/String;)Lcom/google/zxing/aztec/decoder/Decoder$Table;" class_method="true"/>
+</class>
+<class name="com/google/zxing/aztec/decoder/Decoder">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="decode" type="(Lcom/google/zxing/aztec/AztecDetectorResult;)Lcom/google/zxing/common/DecoderResult;"/>
+<method name="highLevelDecode" type="([Z)Ljava/lang/String;" class_method="true"/>
+<method name="extractBits" type="(Lcom/google/zxing/common/BitMatrix;)[Z"/>
+</class>
+<class name="com/google/zxing/aztec/detector/Detector$Point">
+<method name="toResultPoint" type="()Lcom/google/zxing/ResultPoint;"/>
+<method name="&lt;init&gt;" type="(II)V"/>
+<method name="getX" type="()I"/>
+<method name="getY" type="()I"/>
+<method name="toString" type="()Ljava/lang/String;"/>
+</class>
+<class name="com/google/zxing/aztec/detector/Detector">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;)V"/>
+<method name="detect" type="()Lcom/google/zxing/aztec/AztecDetectorResult;"/>
+<method name="detect" type="(Z)Lcom/google/zxing/aztec/AztecDetectorResult;"/>
+</class>
+<class name="com/google/zxing/aztec/encoder/AztecCode">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="isCompact" type="()Z"/>
+<method name="setCompact" type="(Z)V"/>
+<method name="getSize" type="()I"/>
+<method name="setSize" type="(I)V"/>
+<method name="getLayers" type="()I"/>
+<method name="setLayers" type="(I)V"/>
+<method name="getCodeWords" type="()I"/>
+<method name="setCodeWords" type="(I)V"/>
+<method name="getMatrix" type="()Lcom/google/zxing/common/BitMatrix;"/>
+<method name="setMatrix" type="(Lcom/google/zxing/common/BitMatrix;)V"/>
 </class>
 <class name="com/google/zxing/aztec/encoder/BinaryShiftToken">
 <method name="&lt;init&gt;" type="(Lcom/google/zxing/aztec/encoder/Token;II)V"/>
 <method name="appendTo" type="(Lcom/google/zxing/common/BitArray;[B)V"/>
 <method name="toString" type="()Ljava/lang/String;"/>
 </class>
+<class name="com/google/zxing/aztec/encoder/Encoder">
+<method name="encode" type="([B)Lcom/google/zxing/aztec/encoder/AztecCode;" class_method="true"/>
+<method name="encode" type="([BII)Lcom/google/zxing/aztec/encoder/AztecCode;" class_method="true"/>
+<method name="generateModeMessage" type="(ZII)Lcom/google/zxing/common/BitArray;" class_method="true"/>
+<method name="stuffBits" type="(Lcom/google/zxing/common/BitArray;I)Lcom/google/zxing/common/BitArray;" class_method="true"/>
+</class>
+<class name="com/google/zxing/aztec/encoder/HighLevelEncoder$1">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/aztec/encoder/HighLevelEncoder;)V"/>
+<method name="compare" type="(Lcom/google/zxing/aztec/encoder/State;Lcom/google/zxing/aztec/encoder/State;)I"/>
+<method name="compare" type="(Ljava/lang/Object;Ljava/lang/Object;)I"/>
+</class>
+<class name="com/google/zxing/aztec/encoder/HighLevelEncoder">
+<method name="&lt;init&gt;" type="([B)V"/>
+<method name="encode" type="()Lcom/google/zxing/common/BitArray;"/>
+</class>
 <class name="com/google/zxing/aztec/encoder/SimpleToken">
 <method name="&lt;init&gt;" type="(Lcom/google/zxing/aztec/encoder/Token;II)V"/>
 <method name="appendTo" type="(Lcom/google/zxing/common/BitArray;[B)V"/>
 <method name="toString" type="()Ljava/lang/String;"/>
 </class>
+<class name="com/google/zxing/aztec/encoder/State">
+<method name="getMode" type="()I"/>
+<method name="getToken" type="()Lcom/google/zxing/aztec/encoder/Token;"/>
+<method name="getBinaryShiftByteCount" type="()I"/>
+<method name="getBitCount" type="()I"/>
+<method name="latchAndAppend" type="(II)Lcom/google/zxing/aztec/encoder/State;"/>
+<method name="shiftAndAppend" type="(II)Lcom/google/zxing/aztec/encoder/State;"/>
+<method name="addBinaryShiftChar" type="(I)Lcom/google/zxing/aztec/encoder/State;"/>
+<method name="endBinaryShift" type="(I)Lcom/google/zxing/aztec/encoder/State;"/>
+<method name="isBetterThanOrEqualTo" type="(Lcom/google/zxing/aztec/encoder/State;)Z"/>
+<method name="toBitArray" type="([B)Lcom/google/zxing/common/BitArray;"/>
+<method name="toString" type="()Ljava/lang/String;"/>
+</class>
+<class name="com/google/zxing/aztec/encoder/Token">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/aztec/encoder/Token;)V"/>
+<method name="getPrevious" type="()Lcom/google/zxing/aztec/encoder/Token;"/>
+<method name="add" type="(II)Lcom/google/zxing/aztec/encoder/Token;"/>
+<method name="addBinaryShift" type="(II)Lcom/google/zxing/aztec/encoder/Token;"/>
+<method name="appendTo" type="(Lcom/google/zxing/common/BitArray;[B)V"/>
+</class>
 <class name="com/google/zxing/BarcodeFormat">
 <method name="values" type="()[Lcom/google/zxing/BarcodeFormat;" class_method="true"/>
 <method name="valueOf" type="(Ljava/lang/String;)Lcom/google/zxing/BarcodeFormat;" class_method="true"/>
+</class>
+<class name="com/google/zxing/Binarizer">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/LuminanceSource;)V"/>
+<method name="getLuminanceSource" type="()Lcom/google/zxing/LuminanceSource;"/>
+<method name="getBlackRow" type="(ILcom/google/zxing/common/BitArray;)Lcom/google/zxing/common/BitArray;"/>
+<method name="getBlackMatrix" type="()Lcom/google/zxing/common/BitMatrix;"/>
+<method name="createBinarizer" type="(Lcom/google/zxing/LuminanceSource;)Lcom/google/zxing/Binarizer;"/>
+<method name="getWidth" type="()I"/>
+<method name="getHeight" type="()I"/>
+</class>
+<class name="com/google/zxing/BinaryBitmap">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/Binarizer;)V"/>
+<method name="getWidth" type="()I"/>
+<method name="getHeight" type="()I"/>
+<method name="getBlackRow" type="(ILcom/google/zxing/common/BitArray;)Lcom/google/zxing/common/BitArray;"/>
+<method name="getBlackMatrix" type="()Lcom/google/zxing/common/BitMatrix;"/>
+<method name="isCropSupported" type="()Z"/>
+<method name="crop" type="(IIII)Lcom/google/zxing/BinaryBitmap;"/>
+<method name="isRotateSupported" type="()Z"/>
+<method name="rotateCounterClockwise" type="()Lcom/google/zxing/BinaryBitmap;"/>
+<method name="rotateCounterClockwise45" type="()Lcom/google/zxing/BinaryBitmap;"/>
+<method name="toString" type="()Ljava/lang/String;"/>
 </class>
 <class name="com/google/zxing/ChecksumException">
 <method name="getChecksumInstance" type="()Lcom/google/zxing/ChecksumException;" class_method="true"/>
@@ -157,6 +258,14 @@
 <method name="parse" type="(Lcom/google/zxing/Result;)Lcom/google/zxing/client/result/ISBNParsedResult;"/>
 <method name="parse" type="(Lcom/google/zxing/Result;)Lcom/google/zxing/client/result/ParsedResult;"/>
 </class>
+<class name="com/google/zxing/client/result/ParsedResult">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/client/result/ParsedResultType;)V"/>
+<method name="getType" type="()Lcom/google/zxing/client/result/ParsedResultType;"/>
+<method name="getDisplayResult" type="()Ljava/lang/String;"/>
+<method name="toString" type="()Ljava/lang/String;"/>
+<method name="maybeAppend" type="(Ljava/lang/String;Ljava/lang/StringBuilder;)V" class_method="true"/>
+<method name="maybeAppend" type="([Ljava/lang/String;Ljava/lang/StringBuilder;)V" class_method="true"/>
+</class>
 <class name="com/google/zxing/client/result/ParsedResultType">
 <method name="values" type="()[Lcom/google/zxing/client/result/ParsedResultType;" class_method="true"/>
 <method name="valueOf" type="(Ljava/lang/String;)Lcom/google/zxing/client/result/ParsedResultType;" class_method="true"/>
@@ -172,6 +281,23 @@
 <method name="&lt;init&gt;" type="()V"/>
 <method name="parse" type="(Lcom/google/zxing/Result;)Lcom/google/zxing/client/result/ProductParsedResult;"/>
 <method name="parse" type="(Lcom/google/zxing/Result;)Lcom/google/zxing/client/result/ParsedResult;"/>
+</class>
+<class name="com/google/zxing/client/result/ResultParser">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="parse" type="(Lcom/google/zxing/Result;)Lcom/google/zxing/client/result/ParsedResult;"/>
+<method name="getMassagedText" type="(Lcom/google/zxing/Result;)Ljava/lang/String;" class_method="true"/>
+<method name="parseResult" type="(Lcom/google/zxing/Result;)Lcom/google/zxing/client/result/ParsedResult;" class_method="true"/>
+<method name="maybeAppend" type="(Ljava/lang/String;Ljava/lang/StringBuilder;)V" class_method="true"/>
+<method name="maybeAppend" type="([Ljava/lang/String;Ljava/lang/StringBuilder;)V" class_method="true"/>
+<method name="maybeWrap" type="(Ljava/lang/String;)[Ljava/lang/String;" class_method="true"/>
+<method name="unescapeBackslash" type="(Ljava/lang/String;)Ljava/lang/String;" class_method="true"/>
+<method name="parseHexDigit" type="(C)I" class_method="true"/>
+<method name="isStringOfDigits" type="(Ljava/lang/CharSequence;I)Z" class_method="true"/>
+<method name="isSubstringOfDigits" type="(Ljava/lang/CharSequence;II)Z" class_method="true"/>
+<method name="parseNameValuePairs" type="(Ljava/lang/String;)Ljava/util/Map;" class_method="true"/>
+<method name="urlDecode" type="(Ljava/lang/String;)Ljava/lang/String;" class_method="true"/>
+<method name="matchPrefixedField" type="(Ljava/lang/String;Ljava/lang/String;CZ)[Ljava/lang/String;" class_method="true"/>
+<method name="matchSinglePrefixedField" type="(Ljava/lang/String;Ljava/lang/String;CZ)Ljava/lang/String;" class_method="true"/>
 </class>
 <class name="com/google/zxing/client/result/SMSMMSResultParser">
 <method name="&lt;init&gt;" type="()V"/>
@@ -278,6 +404,63 @@
 <method name="parse" type="(Lcom/google/zxing/Result;)Lcom/google/zxing/client/result/WifiParsedResult;"/>
 <method name="parse" type="(Lcom/google/zxing/Result;)Lcom/google/zxing/client/result/ParsedResult;"/>
 </class>
+<class name="com/google/zxing/common/BitArray">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="&lt;init&gt;" type="(I)V"/>
+<method name="&lt;init&gt;" type="([II)V"/>
+<method name="getSize" type="()I"/>
+<method name="getSizeInBytes" type="()I"/>
+<method name="get" type="(I)Z"/>
+<method name="set" type="(I)V"/>
+<method name="flip" type="(I)V"/>
+<method name="getNextSet" type="(I)I"/>
+<method name="getNextUnset" type="(I)I"/>
+<method name="setBulk" type="(II)V"/>
+<method name="setRange" type="(II)V"/>
+<method name="clear" type="()V"/>
+<method name="isRange" type="(IIZ)Z"/>
+<method name="appendBit" type="(Z)V"/>
+<method name="appendBits" type="(II)V"/>
+<method name="appendBitArray" type="(Lcom/google/zxing/common/BitArray;)V"/>
+<method name="xor" type="(Lcom/google/zxing/common/BitArray;)V"/>
+<method name="toBytes" type="(I[BII)V"/>
+<method name="getBitArray" type="()[I"/>
+<method name="reverse" type="()V"/>
+<method name="equals" type="(Ljava/lang/Object;)Z"/>
+<method name="hashCode" type="()I"/>
+<method name="toString" type="()Ljava/lang/String;"/>
+<method name="clone" type="()Lcom/google/zxing/common/BitArray;"/>
+<method name="clone" type="()Ljava/lang/Object;"/>
+</class>
+<class name="com/google/zxing/common/BitMatrix">
+<method name="&lt;init&gt;" type="(I)V"/>
+<method name="&lt;init&gt;" type="(II)V"/>
+<method name="get" type="(II)Z"/>
+<method name="set" type="(II)V"/>
+<method name="flip" type="(II)V"/>
+<method name="clear" type="()V"/>
+<method name="setRegion" type="(IIII)V"/>
+<method name="getRow" type="(ILcom/google/zxing/common/BitArray;)Lcom/google/zxing/common/BitArray;"/>
+<method name="setRow" type="(ILcom/google/zxing/common/BitArray;)V"/>
+<method name="rotate180" type="()V"/>
+<method name="getEnclosingRectangle" type="()[I"/>
+<method name="getTopLeftOnBit" type="()[I"/>
+<method name="getBottomRightOnBit" type="()[I"/>
+<method name="getWidth" type="()I"/>
+<method name="getHeight" type="()I"/>
+<method name="equals" type="(Ljava/lang/Object;)Z"/>
+<method name="hashCode" type="()I"/>
+<method name="toString" type="()Ljava/lang/String;"/>
+<method name="clone" type="()Lcom/google/zxing/common/BitMatrix;"/>
+<method name="clone" type="()Ljava/lang/Object;"/>
+</class>
+<class name="com/google/zxing/common/BitSource">
+<method name="&lt;init&gt;" type="([B)V"/>
+<method name="getBitOffset" type="()I"/>
+<method name="getByteOffset" type="()I"/>
+<method name="readBits" type="(I)I"/>
+<method name="available" type="()I"/>
+</class>
 <class name="com/google/zxing/common/CharacterSetECI">
 <method name="values" type="()[Lcom/google/zxing/common/CharacterSetECI;" class_method="true"/>
 <method name="valueOf" type="(Ljava/lang/String;)Lcom/google/zxing/common/CharacterSetECI;" class_method="true"/>
@@ -285,10 +468,46 @@
 <method name="getCharacterSetECIByValue" type="(I)Lcom/google/zxing/common/CharacterSetECI;" class_method="true"/>
 <method name="getCharacterSetECIByName" type="(Ljava/lang/String;)Lcom/google/zxing/common/CharacterSetECI;" class_method="true"/>
 </class>
+<class name="com/google/zxing/common/DecoderResult">
+<method name="&lt;init&gt;" type="([BLjava/lang/String;Ljava/util/List;Ljava/lang/String;)V"/>
+<method name="&lt;init&gt;" type="([BLjava/lang/String;Ljava/util/List;Ljava/lang/String;II)V"/>
+<method name="getRawBytes" type="()[B"/>
+<method name="getText" type="()Ljava/lang/String;"/>
+<method name="getByteSegments" type="()Ljava/util/List;"/>
+<method name="getECLevel" type="()Ljava/lang/String;"/>
+<method name="getErrorsCorrected" type="()Ljava/lang/Integer;"/>
+<method name="setErrorsCorrected" type="(Ljava/lang/Integer;)V"/>
+<method name="getErasures" type="()Ljava/lang/Integer;"/>
+<method name="setErasures" type="(Ljava/lang/Integer;)V"/>
+<method name="getOther" type="()Ljava/lang/Object;"/>
+<method name="setOther" type="(Ljava/lang/Object;)V"/>
+<method name="hasStructuredAppend" type="()Z"/>
+<method name="getStructuredAppendParity" type="()I"/>
+<method name="getStructuredAppendSequenceNumber" type="()I"/>
+</class>
 <class name="com/google/zxing/common/DefaultGridSampler">
 <method name="&lt;init&gt;" type="()V"/>
 <method name="sampleGrid" type="(Lcom/google/zxing/common/BitMatrix;IIFFFFFFFFFFFFFFFF)Lcom/google/zxing/common/BitMatrix;"/>
 <method name="sampleGrid" type="(Lcom/google/zxing/common/BitMatrix;IILcom/google/zxing/common/PerspectiveTransform;)Lcom/google/zxing/common/BitMatrix;"/>
+</class>
+<class name="com/google/zxing/common/detector/MathUtils">
+<method name="round" type="(F)I" class_method="true"/>
+<method name="distance" type="(FFFF)F" class_method="true"/>
+<method name="distance" type="(IIII)F" class_method="true"/>
+</class>
+<class name="com/google/zxing/common/detector/MonochromeRectangleDetector">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;)V"/>
+<method name="detect" type="()[Lcom/google/zxing/ResultPoint;"/>
+</class>
+<class name="com/google/zxing/common/detector/WhiteRectangleDetector">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;)V"/>
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;III)V"/>
+<method name="detect" type="()[Lcom/google/zxing/ResultPoint;"/>
+</class>
+<class name="com/google/zxing/common/DetectorResult">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;[Lcom/google/zxing/ResultPoint;)V"/>
+<method name="getBits" type="()Lcom/google/zxing/common/BitMatrix;"/>
+<method name="getPoints" type="()[Lcom/google/zxing/ResultPoint;"/>
 </class>
 <class name="com/google/zxing/common/GlobalHistogramBinarizer">
 <method name="&lt;init&gt;" type="(Lcom/google/zxing/LuminanceSource;)V"/>
@@ -296,22 +515,247 @@
 <method name="getBlackMatrix" type="()Lcom/google/zxing/common/BitMatrix;"/>
 <method name="createBinarizer" type="(Lcom/google/zxing/LuminanceSource;)Lcom/google/zxing/Binarizer;"/>
 </class>
+<class name="com/google/zxing/common/GridSampler">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="setGridSampler" type="(Lcom/google/zxing/common/GridSampler;)V" class_method="true"/>
+<method name="getInstance" type="()Lcom/google/zxing/common/GridSampler;" class_method="true"/>
+<method name="sampleGrid" type="(Lcom/google/zxing/common/BitMatrix;IIFFFFFFFFFFFFFFFF)Lcom/google/zxing/common/BitMatrix;"/>
+<method name="sampleGrid" type="(Lcom/google/zxing/common/BitMatrix;IILcom/google/zxing/common/PerspectiveTransform;)Lcom/google/zxing/common/BitMatrix;"/>
+<method name="checkAndNudgePoints" type="(Lcom/google/zxing/common/BitMatrix;[F)V" class_method="true"/>
+</class>
 <class name="com/google/zxing/common/HybridBinarizer">
 <method name="&lt;init&gt;" type="(Lcom/google/zxing/LuminanceSource;)V"/>
 <method name="getBlackMatrix" type="()Lcom/google/zxing/common/BitMatrix;"/>
 <method name="createBinarizer" type="(Lcom/google/zxing/LuminanceSource;)Lcom/google/zxing/Binarizer;"/>
 </class>
+<class name="com/google/zxing/common/PerspectiveTransform">
+<method name="quadrilateralToQuadrilateral" type="(FFFFFFFFFFFFFFFF)Lcom/google/zxing/common/PerspectiveTransform;" class_method="true"/>
+<method name="transformPoints" type="([F)V"/>
+<method name="transformPoints" type="([F[F)V"/>
+<method name="squareToQuadrilateral" type="(FFFFFFFF)Lcom/google/zxing/common/PerspectiveTransform;" class_method="true"/>
+<method name="quadrilateralToSquare" type="(FFFFFFFF)Lcom/google/zxing/common/PerspectiveTransform;" class_method="true"/>
+<method name="buildAdjoint" type="()Lcom/google/zxing/common/PerspectiveTransform;"/>
+<method name="times" type="(Lcom/google/zxing/common/PerspectiveTransform;)Lcom/google/zxing/common/PerspectiveTransform;"/>
+</class>
+<class name="com/google/zxing/common/reedsolomon/GenericGF">
+<method name="&lt;init&gt;" type="(III)V"/>
+<method name="getZero" type="()Lcom/google/zxing/common/reedsolomon/GenericGFPoly;"/>
+<method name="getOne" type="()Lcom/google/zxing/common/reedsolomon/GenericGFPoly;"/>
+<method name="buildMonomial" type="(II)Lcom/google/zxing/common/reedsolomon/GenericGFPoly;"/>
+<method name="addOrSubtract" type="(II)I" class_method="true"/>
+<method name="exp" type="(I)I"/>
+<method name="log" type="(I)I"/>
+<method name="inverse" type="(I)I"/>
+<method name="multiply" type="(II)I"/>
+<method name="getSize" type="()I"/>
+<method name="getGeneratorBase" type="()I"/>
+<method name="toString" type="()Ljava/lang/String;"/>
+</class>
+<class name="com/google/zxing/common/reedsolomon/GenericGFPoly">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/reedsolomon/GenericGF;[I)V"/>
+<method name="getCoefficients" type="()[I"/>
+<method name="getDegree" type="()I"/>
+<method name="isZero" type="()Z"/>
+<method name="getCoefficient" type="(I)I"/>
+<method name="evaluateAt" type="(I)I"/>
+<method name="addOrSubtract" type="(Lcom/google/zxing/common/reedsolomon/GenericGFPoly;)Lcom/google/zxing/common/reedsolomon/GenericGFPoly;"/>
+<method name="multiply" type="(Lcom/google/zxing/common/reedsolomon/GenericGFPoly;)Lcom/google/zxing/common/reedsolomon/GenericGFPoly;"/>
+<method name="multiply" type="(I)Lcom/google/zxing/common/reedsolomon/GenericGFPoly;"/>
+<method name="multiplyByMonomial" type="(II)Lcom/google/zxing/common/reedsolomon/GenericGFPoly;"/>
+<method name="divide" type="(Lcom/google/zxing/common/reedsolomon/GenericGFPoly;)[Lcom/google/zxing/common/reedsolomon/GenericGFPoly;"/>
+<method name="toString" type="()Ljava/lang/String;"/>
+</class>
+<class name="com/google/zxing/common/reedsolomon/ReedSolomonDecoder">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/reedsolomon/GenericGF;)V"/>
+<method name="decode" type="([II)V"/>
+</class>
+<class name="com/google/zxing/common/reedsolomon/ReedSolomonEncoder">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/reedsolomon/GenericGF;)V"/>
+<method name="encode" type="([II)V"/>
+</class>
 <class name="com/google/zxing/common/reedsolomon/ReedSolomonException">
 <method name="&lt;init&gt;" type="(Ljava/lang/String;)V"/>
+</class>
+<class name="com/google/zxing/common/StringUtils">
+<method name="guessEncoding" type="([BLjava/util/Map;)Ljava/lang/String;" class_method="true"/>
+</class>
+<class name="com/google/zxing/datamatrix/DataMatrixReader">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
+<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
+<method name="reset" type="()V"/>
+</class>
+<class name="com/google/zxing/datamatrix/DataMatrixWriter">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;II)Lcom/google/zxing/common/BitMatrix;"/>
+<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;IILjava/util/Map;)Lcom/google/zxing/common/BitMatrix;"/>
+</class>
+<class name="com/google/zxing/datamatrix/decoder/BitMatrixParser">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;)V"/>
+<method name="getVersion" type="()Lcom/google/zxing/datamatrix/decoder/Version;"/>
+<method name="readCodewords" type="()[B"/>
+<method name="readModule" type="(IIII)Z"/>
+<method name="readUtah" type="(IIII)I"/>
+<method name="readCorner1" type="(II)I"/>
+<method name="readCorner2" type="(II)I"/>
+<method name="readCorner3" type="(II)I"/>
+<method name="readCorner4" type="(II)I"/>
+<method name="extractDataRegion" type="(Lcom/google/zxing/common/BitMatrix;)Lcom/google/zxing/common/BitMatrix;"/>
+</class>
+<class name="com/google/zxing/datamatrix/decoder/DataBlock">
+<method name="getDataBlocks" type="([BLcom/google/zxing/datamatrix/decoder/Version;)[Lcom/google/zxing/datamatrix/decoder/DataBlock;" class_method="true"/>
+<method name="getNumDataCodewords" type="()I"/>
+<method name="getCodewords" type="()[B"/>
+</class>
+<class name="com/google/zxing/datamatrix/decoder/DecodedBitStreamParser$1">
 </class>
 <class name="com/google/zxing/datamatrix/decoder/DecodedBitStreamParser$Mode">
 <method name="values" type="()[Lcom/google/zxing/datamatrix/decoder/DecodedBitStreamParser$Mode;" class_method="true"/>
 <method name="valueOf" type="(Ljava/lang/String;)Lcom/google/zxing/datamatrix/decoder/DecodedBitStreamParser$Mode;" class_method="true"/>
 </class>
+<class name="com/google/zxing/datamatrix/decoder/DecodedBitStreamParser">
+<method name="decode" type="([B)Lcom/google/zxing/common/DecoderResult;" class_method="true"/>
+</class>
+<class name="com/google/zxing/datamatrix/decoder/Decoder">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="decode" type="([[Z)Lcom/google/zxing/common/DecoderResult;"/>
+<method name="decode" type="(Lcom/google/zxing/common/BitMatrix;)Lcom/google/zxing/common/DecoderResult;"/>
+</class>
+<class name="com/google/zxing/datamatrix/decoder/Version$1">
+</class>
+<class name="com/google/zxing/datamatrix/decoder/Version$ECB">
+<method name="getCount" type="()I"/>
+<method name="getDataCodewords" type="()I"/>
+<method name="&lt;init&gt;" type="(IILcom/google/zxing/datamatrix/decoder/Version$1;)V"/>
+</class>
+<class name="com/google/zxing/datamatrix/decoder/Version$ECBlocks">
+<method name="getECCodewords" type="()I"/>
+<method name="getECBlocks" type="()[Lcom/google/zxing/datamatrix/decoder/Version$ECB;"/>
+<method name="&lt;init&gt;" type="(ILcom/google/zxing/datamatrix/decoder/Version$ECB;Lcom/google/zxing/datamatrix/decoder/Version$1;)V"/>
+<method name="&lt;init&gt;" type="(ILcom/google/zxing/datamatrix/decoder/Version$ECB;Lcom/google/zxing/datamatrix/decoder/Version$ECB;Lcom/google/zxing/datamatrix/decoder/Version$1;)V"/>
+</class>
+<class name="com/google/zxing/datamatrix/decoder/Version">
+<method name="getVersionNumber" type="()I"/>
+<method name="getSymbolSizeRows" type="()I"/>
+<method name="getSymbolSizeColumns" type="()I"/>
+<method name="getDataRegionSizeRows" type="()I"/>
+<method name="getDataRegionSizeColumns" type="()I"/>
+<method name="getTotalCodewords" type="()I"/>
+<method name="getECBlocks" type="()Lcom/google/zxing/datamatrix/decoder/Version$ECBlocks;"/>
+<method name="getVersionForDimensions" type="(II)Lcom/google/zxing/datamatrix/decoder/Version;" class_method="true"/>
+<method name="toString" type="()Ljava/lang/String;"/>
+</class>
+<class name="com/google/zxing/datamatrix/detector/Detector$1">
+</class>
+<class name="com/google/zxing/datamatrix/detector/Detector$ResultPointsAndTransitions">
+<method name="getFrom" type="()Lcom/google/zxing/ResultPoint;"/>
+<method name="getTo" type="()Lcom/google/zxing/ResultPoint;"/>
+<method name="getTransitions" type="()I"/>
+<method name="toString" type="()Ljava/lang/String;"/>
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/ResultPoint;Lcom/google/zxing/ResultPoint;ILcom/google/zxing/datamatrix/detector/Detector$1;)V"/>
+</class>
+<class name="com/google/zxing/datamatrix/detector/Detector$ResultPointsAndTransitionsComparator">
+<method name="compare" type="(Lcom/google/zxing/datamatrix/detector/Detector$ResultPointsAndTransitions;Lcom/google/zxing/datamatrix/detector/Detector$ResultPointsAndTransitions;)I"/>
+<method name="compare" type="(Ljava/lang/Object;Ljava/lang/Object;)I"/>
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/datamatrix/detector/Detector$1;)V"/>
+</class>
+<class name="com/google/zxing/datamatrix/detector/Detector">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;)V"/>
+<method name="detect" type="()Lcom/google/zxing/common/DetectorResult;"/>
+</class>
+<class name="com/google/zxing/datamatrix/encoder/ASCIIEncoder">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="getEncodingMode" type="()I"/>
+<method name="encode" type="(Lcom/google/zxing/datamatrix/encoder/EncoderContext;)V"/>
+</class>
+<class name="com/google/zxing/datamatrix/encoder/Base256Encoder">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="getEncodingMode" type="()I"/>
+<method name="encode" type="(Lcom/google/zxing/datamatrix/encoder/EncoderContext;)V"/>
+</class>
+<class name="com/google/zxing/datamatrix/encoder/C40Encoder">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="getEncodingMode" type="()I"/>
+<method name="encode" type="(Lcom/google/zxing/datamatrix/encoder/EncoderContext;)V"/>
+<method name="writeNextTriplet" type="(Lcom/google/zxing/datamatrix/encoder/EncoderContext;Ljava/lang/StringBuilder;)V" class_method="true"/>
+<method name="handleEOD" type="(Lcom/google/zxing/datamatrix/encoder/EncoderContext;Ljava/lang/StringBuilder;)V"/>
+<method name="encodeChar" type="(CLjava/lang/StringBuilder;)I"/>
+</class>
 <class name="com/google/zxing/datamatrix/encoder/DataMatrixSymbolInfo144">
 <method name="&lt;init&gt;" type="()V"/>
 <method name="getInterleavedBlockCount" type="()I"/>
 <method name="getDataLengthForInterleavedBlock" type="(I)I"/>
+</class>
+<class name="com/google/zxing/datamatrix/encoder/DefaultPlacement">
+<method name="&lt;init&gt;" type="(Ljava/lang/CharSequence;II)V"/>
+<method name="getNumrows" type="()I"/>
+<method name="getNumcols" type="()I"/>
+<method name="getBits" type="()[B"/>
+<method name="getBit" type="(II)Z"/>
+<method name="setBit" type="(IIZ)V"/>
+<method name="hasBit" type="(II)Z"/>
+<method name="place" type="()V"/>
+</class>
+<class name="com/google/zxing/datamatrix/encoder/EdifactEncoder">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="getEncodingMode" type="()I"/>
+<method name="encode" type="(Lcom/google/zxing/datamatrix/encoder/EncoderContext;)V"/>
+</class>
+<class name="com/google/zxing/datamatrix/encoder/EncoderContext">
+<method name="&lt;init&gt;" type="(Ljava/lang/String;)V"/>
+<method name="setSymbolShape" type="(Lcom/google/zxing/datamatrix/encoder/SymbolShapeHint;)V"/>
+<method name="setSizeConstraints" type="(Lcom/google/zxing/Dimension;Lcom/google/zxing/Dimension;)V"/>
+<method name="getMessage" type="()Ljava/lang/String;"/>
+<method name="setSkipAtEnd" type="(I)V"/>
+<method name="getCurrentChar" type="()C"/>
+<method name="getCurrent" type="()C"/>
+<method name="getCodewords" type="()Ljava/lang/StringBuilder;"/>
+<method name="writeCodewords" type="(Ljava/lang/String;)V"/>
+<method name="writeCodeword" type="(C)V"/>
+<method name="getCodewordCount" type="()I"/>
+<method name="getNewEncoding" type="()I"/>
+<method name="signalEncoderChange" type="(I)V"/>
+<method name="resetEncoderSignal" type="()V"/>
+<method name="hasMoreCharacters" type="()Z"/>
+<method name="getRemainingCharacters" type="()I"/>
+<method name="getSymbolInfo" type="()Lcom/google/zxing/datamatrix/encoder/SymbolInfo;"/>
+<method name="updateSymbolInfo" type="()V"/>
+<method name="updateSymbolInfo" type="(I)V"/>
+<method name="resetSymbolInfo" type="()V"/>
+</class>
+<class name="com/google/zxing/datamatrix/encoder/ErrorCorrection">
+<method name="encodeECC200" type="(Ljava/lang/String;Lcom/google/zxing/datamatrix/encoder/SymbolInfo;)Ljava/lang/String;" class_method="true"/>
+</class>
+<class name="com/google/zxing/datamatrix/encoder/HighLevelEncoder">
+<method name="encodeHighLevel" type="(Ljava/lang/String;)Ljava/lang/String;" class_method="true"/>
+<method name="encodeHighLevel" type="(Ljava/lang/String;Lcom/google/zxing/datamatrix/encoder/SymbolShapeHint;Lcom/google/zxing/Dimension;Lcom/google/zxing/Dimension;)Ljava/lang/String;" class_method="true"/>
+<method name="lookAheadTest" type="(Ljava/lang/CharSequence;II)I" class_method="true"/>
+<method name="isDigit" type="(C)Z" class_method="true"/>
+<method name="isExtendedASCII" type="(C)Z" class_method="true"/>
+<method name="determineConsecutiveDigitCount" type="(Ljava/lang/CharSequence;I)I" class_method="true"/>
+<method name="illegalCharacter" type="(C)V" class_method="true"/>
+</class>
+<class name="com/google/zxing/datamatrix/encoder/SymbolInfo">
+<method name="overrideSymbolSet" type="([Lcom/google/zxing/datamatrix/encoder/SymbolInfo;)V" class_method="true"/>
+<method name="&lt;init&gt;" type="(ZIIIII)V"/>
+<method name="&lt;init&gt;" type="(ZIIIIIII)V"/>
+<method name="lookup" type="(I)Lcom/google/zxing/datamatrix/encoder/SymbolInfo;" class_method="true"/>
+<method name="lookup" type="(ILcom/google/zxing/datamatrix/encoder/SymbolShapeHint;)Lcom/google/zxing/datamatrix/encoder/SymbolInfo;" class_method="true"/>
+<method name="lookup" type="(IZZ)Lcom/google/zxing/datamatrix/encoder/SymbolInfo;" class_method="true"/>
+<method name="lookup" type="(ILcom/google/zxing/datamatrix/encoder/SymbolShapeHint;Lcom/google/zxing/Dimension;Lcom/google/zxing/Dimension;Z)Lcom/google/zxing/datamatrix/encoder/SymbolInfo;" class_method="true"/>
+<method name="getHorizontalDataRegions" type="()I"/>
+<method name="getVerticalDataRegions" type="()I"/>
+<method name="getSymbolDataWidth" type="()I"/>
+<method name="getSymbolDataHeight" type="()I"/>
+<method name="getSymbolWidth" type="()I"/>
+<method name="getSymbolHeight" type="()I"/>
+<method name="getCodewordCount" type="()I"/>
+<method name="getInterleavedBlockCount" type="()I"/>
+<method name="getDataCapacity" type="()I"/>
+<method name="getErrorCodewords" type="()I"/>
+<method name="getDataLengthForInterleavedBlock" type="(I)I"/>
+<method name="getErrorLengthForInterleavedBlock" type="(I)I"/>
+<method name="toString" type="()Ljava/lang/String;"/>
 </class>
 <class name="com/google/zxing/datamatrix/encoder/SymbolShapeHint">
 <method name="values" type="()[Lcom/google/zxing/datamatrix/encoder/SymbolShapeHint;" class_method="true"/>
@@ -334,6 +778,14 @@
 <method name="valueOf" type="(Ljava/lang/String;)Lcom/google/zxing/DecodeHintType;" class_method="true"/>
 <method name="getValueType" type="()Ljava/lang/Class;"/>
 </class>
+<class name="com/google/zxing/Dimension">
+<method name="&lt;init&gt;" type="(II)V"/>
+<method name="getWidth" type="()I"/>
+<method name="getHeight" type="()I"/>
+<method name="equals" type="(Ljava/lang/Object;)Z"/>
+<method name="hashCode" type="()I"/>
+<method name="toString" type="()Ljava/lang/String;"/>
+</class>
 <class name="com/google/zxing/EncodeHintType">
 <method name="values" type="()[Lcom/google/zxing/EncodeHintType;" class_method="true"/>
 <method name="valueOf" type="(Ljava/lang/String;)Lcom/google/zxing/EncodeHintType;" class_method="true"/>
@@ -352,19 +804,91 @@
 <method name="rotateCounterClockwise" type="()Lcom/google/zxing/LuminanceSource;"/>
 <method name="rotateCounterClockwise45" type="()Lcom/google/zxing/LuminanceSource;"/>
 </class>
+<class name="com/google/zxing/LuminanceSource">
+<method name="&lt;init&gt;" type="(II)V"/>
+<method name="getRow" type="(I[B)[B"/>
+<method name="getMatrix" type="()[B"/>
+<method name="getWidth" type="()I"/>
+<method name="getHeight" type="()I"/>
+<method name="isCropSupported" type="()Z"/>
+<method name="crop" type="(IIII)Lcom/google/zxing/LuminanceSource;"/>
+<method name="isRotateSupported" type="()Z"/>
+<method name="invert" type="()Lcom/google/zxing/LuminanceSource;"/>
+<method name="rotateCounterClockwise" type="()Lcom/google/zxing/LuminanceSource;"/>
+<method name="rotateCounterClockwise45" type="()Lcom/google/zxing/LuminanceSource;"/>
+<method name="toString" type="()Ljava/lang/String;"/>
+</class>
+<class name="com/google/zxing/maxicode/decoder/BitMatrixParser">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;)V"/>
+<method name="readCodewords" type="()[B"/>
+</class>
+<class name="com/google/zxing/maxicode/decoder/DecodedBitStreamParser">
+<method name="decode" type="([BI)Lcom/google/zxing/common/DecoderResult;" class_method="true"/>
+</class>
+<class name="com/google/zxing/maxicode/decoder/Decoder">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="decode" type="(Lcom/google/zxing/common/BitMatrix;)Lcom/google/zxing/common/DecoderResult;"/>
+<method name="decode" type="(Lcom/google/zxing/common/BitMatrix;Ljava/util/Map;)Lcom/google/zxing/common/DecoderResult;"/>
+</class>
+<class name="com/google/zxing/maxicode/MaxiCodeReader">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
+<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
+<method name="reset" type="()V"/>
+</class>
+<class name="com/google/zxing/multi/ByQuadrantReader">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/Reader;)V"/>
+<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
+<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
+<method name="reset" type="()V"/>
+</class>
+<class name="com/google/zxing/multi/GenericMultipleBarcodeReader">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/Reader;)V"/>
+<method name="decodeMultiple" type="(Lcom/google/zxing/BinaryBitmap;)[Lcom/google/zxing/Result;"/>
+<method name="decodeMultiple" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)[Lcom/google/zxing/Result;"/>
+</class>
 <class name="com/google/zxing/multi/qrcode/detector/MultiDetector">
 <method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;)V"/>
 <method name="detectMulti" type="(Ljava/util/Map;)[Lcom/google/zxing/common/DetectorResult;"/>
+</class>
+<class name="com/google/zxing/multi/qrcode/detector/MultiFinderPatternFinder$1">
+</class>
+<class name="com/google/zxing/multi/qrcode/detector/MultiFinderPatternFinder$ModuleSizeComparator">
+<method name="compare" type="(Lcom/google/zxing/qrcode/detector/FinderPattern;Lcom/google/zxing/qrcode/detector/FinderPattern;)I"/>
+<method name="compare" type="(Ljava/lang/Object;Ljava/lang/Object;)I"/>
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/multi/qrcode/detector/MultiFinderPatternFinder$1;)V"/>
 </class>
 <class name="com/google/zxing/multi/qrcode/detector/MultiFinderPatternFinder">
 <method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;)V"/>
 <method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;Lcom/google/zxing/ResultPointCallback;)V"/>
 <method name="findMulti" type="(Ljava/util/Map;)[Lcom/google/zxing/qrcode/detector/FinderPatternInfo;"/>
 </class>
+<class name="com/google/zxing/multi/qrcode/QRCodeMultiReader$1">
+</class>
+<class name="com/google/zxing/multi/qrcode/QRCodeMultiReader$SAComparator">
+<method name="compare" type="(Lcom/google/zxing/Result;Lcom/google/zxing/Result;)I"/>
+<method name="compare" type="(Ljava/lang/Object;Ljava/lang/Object;)I"/>
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/multi/qrcode/QRCodeMultiReader$1;)V"/>
+</class>
 <class name="com/google/zxing/multi/qrcode/QRCodeMultiReader">
 <method name="&lt;init&gt;" type="()V"/>
 <method name="decodeMultiple" type="(Lcom/google/zxing/BinaryBitmap;)[Lcom/google/zxing/Result;"/>
 <method name="decodeMultiple" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)[Lcom/google/zxing/Result;"/>
+</class>
+<class name="com/google/zxing/MultiFormatReader">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
+<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
+<method name="decodeWithState" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
+<method name="setHints" type="(Ljava/util/Map;)V"/>
+<method name="reset" type="()V"/>
+</class>
+<class name="com/google/zxing/MultiFormatWriter$1">
+</class>
+<class name="com/google/zxing/MultiFormatWriter">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;II)Lcom/google/zxing/common/BitMatrix;"/>
+<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;IILjava/util/Map;)Lcom/google/zxing/common/BitMatrix;"/>
 </class>
 <class name="com/google/zxing/NotFoundException">
 <method name="getNotFoundInstance" type="()Lcom/google/zxing/NotFoundException;" class_method="true"/>
@@ -423,6 +947,10 @@
 <method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;IILjava/util/Map;)Lcom/google/zxing/common/BitMatrix;"/>
 <method name="encode" type="(Ljava/lang/String;)[Z"/>
 </class>
+<class name="com/google/zxing/oned/EANManufacturerOrgSupport">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="lookupCountryIdentifier" type="(Ljava/lang/String;)Ljava/lang/String;"/>
+</class>
 <class name="com/google/zxing/oned/ITFReader">
 <method name="&lt;init&gt;" type="()V"/>
 <method name="decodeRow" type="(ILcom/google/zxing/common/BitArray;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
@@ -444,6 +972,24 @@
 <method name="decodeRow" type="(ILcom/google/zxing/common/BitArray;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
 <method name="reset" type="()V"/>
 </class>
+<class name="com/google/zxing/oned/OneDimensionalCodeWriter">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;II)Lcom/google/zxing/common/BitMatrix;"/>
+<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;IILjava/util/Map;)Lcom/google/zxing/common/BitMatrix;"/>
+<method name="appendPattern" type="([ZI[IZ)I" class_method="true"/>
+<method name="getDefaultMargin" type="()I"/>
+<method name="encode" type="(Ljava/lang/String;)[Z"/>
+</class>
+<class name="com/google/zxing/oned/OneDReader">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
+<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
+<method name="reset" type="()V"/>
+<method name="recordPattern" type="(Lcom/google/zxing/common/BitArray;I[I)V" class_method="true"/>
+<method name="recordPatternInReverse" type="(Lcom/google/zxing/common/BitArray;I[I)V" class_method="true"/>
+<method name="patternMatchVariance" type="([I[IF)F" class_method="true"/>
+<method name="decodeRow" type="(ILcom/google/zxing/common/BitArray;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
+</class>
 <class name="com/google/zxing/oned/rss/AbstractRSSReader">
 <method name="&lt;init&gt;" type="()V"/>
 <method name="getDecodeFinderCounters" type="()[I"/>
@@ -457,6 +1003,24 @@
 <method name="increment" type="([I[F)V" class_method="true"/>
 <method name="decrement" type="([I[F)V" class_method="true"/>
 <method name="isFinderPattern" type="([I)Z" class_method="true"/>
+</class>
+<class name="com/google/zxing/oned/rss/DataCharacter">
+<method name="&lt;init&gt;" type="(II)V"/>
+<method name="getValue" type="()I"/>
+<method name="getChecksumPortion" type="()I"/>
+<method name="toString" type="()Ljava/lang/String;"/>
+<method name="equals" type="(Ljava/lang/Object;)Z"/>
+<method name="hashCode" type="()I"/>
+</class>
+<class name="com/google/zxing/oned/rss/expanded/BitArrayBuilder">
+<method name="buildBitArray" type="(Ljava/util/List;)Lcom/google/zxing/common/BitArray;" class_method="true"/>
+</class>
+<class name="com/google/zxing/oned/rss/expanded/decoders/AbstractExpandedDecoder">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitArray;)V"/>
+<method name="getInformation" type="()Lcom/google/zxing/common/BitArray;"/>
+<method name="getGeneralDecoder" type="()Lcom/google/zxing/oned/rss/expanded/decoders/GeneralAppIdDecoder;"/>
+<method name="parseInformation" type="()Ljava/lang/String;"/>
+<method name="createDecoder" type="(Lcom/google/zxing/common/BitArray;)Lcom/google/zxing/oned/rss/expanded/decoders/AbstractExpandedDecoder;" class_method="true"/>
 </class>
 <class name="com/google/zxing/oned/rss/expanded/decoders/AI013103decoder">
 <method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitArray;)V"/>
@@ -505,9 +1069,27 @@
 <method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitArray;)V"/>
 <method name="parseInformation" type="()Ljava/lang/String;"/>
 </class>
+<class name="com/google/zxing/oned/rss/expanded/decoders/BlockParsedResult">
+<method name="&lt;init&gt;" type="(Z)V"/>
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/oned/rss/expanded/decoders/DecodedInformation;Z)V"/>
+<method name="getDecodedInformation" type="()Lcom/google/zxing/oned/rss/expanded/decoders/DecodedInformation;"/>
+<method name="isFinished" type="()Z"/>
+</class>
 <class name="com/google/zxing/oned/rss/expanded/decoders/CurrentParsingState$State">
 <method name="values" type="()[Lcom/google/zxing/oned/rss/expanded/decoders/CurrentParsingState$State;" class_method="true"/>
 <method name="valueOf" type="(Ljava/lang/String;)Lcom/google/zxing/oned/rss/expanded/decoders/CurrentParsingState$State;" class_method="true"/>
+</class>
+<class name="com/google/zxing/oned/rss/expanded/decoders/CurrentParsingState">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="getPosition" type="()I"/>
+<method name="setPosition" type="(I)V"/>
+<method name="incrementPosition" type="(I)V"/>
+<method name="isAlpha" type="()Z"/>
+<method name="isNumeric" type="()Z"/>
+<method name="isIsoIec646" type="()Z"/>
+<method name="setNumeric" type="()V"/>
+<method name="setAlpha" type="()V"/>
+<method name="setIsoIec646" type="()V"/>
 </class>
 <class name="com/google/zxing/oned/rss/expanded/decoders/DecodedChar">
 <method name="&lt;init&gt;" type="(IC)V"/>
@@ -529,585 +1111,6 @@
 <method name="isFirstDigitFNC1" type="()Z"/>
 <method name="isSecondDigitFNC1" type="()Z"/>
 <method name="isAnyFNC1" type="()Z"/>
-</class>
-<class name="com/google/zxing/oned/rss/expanded/RSSExpandedReader">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="decodeRow" type="(ILcom/google/zxing/common/BitArray;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
-<method name="reset" type="()V"/>
-<method name="decodeRow2pairs" type="(ILcom/google/zxing/common/BitArray;)Ljava/util/List;"/>
-<method name="getRows" type="()Ljava/util/List;"/>
-<method name="constructResult" type="(Ljava/util/List;)Lcom/google/zxing/Result;" class_method="true"/>
-<method name="retrieveNextPair" type="(Lcom/google/zxing/common/BitArray;Ljava/util/List;I)Lcom/google/zxing/oned/rss/expanded/ExpandedPair;"/>
-<method name="decodeDataCharacter" type="(Lcom/google/zxing/common/BitArray;Lcom/google/zxing/oned/rss/FinderPattern;ZZ)Lcom/google/zxing/oned/rss/DataCharacter;"/>
-</class>
-<class name="com/google/zxing/oned/rss/Pair">
-<method name="&lt;init&gt;" type="(IILcom/google/zxing/oned/rss/FinderPattern;)V"/>
-<method name="getFinderPattern" type="()Lcom/google/zxing/oned/rss/FinderPattern;"/>
-<method name="getCount" type="()I"/>
-<method name="incrementCount" type="()V"/>
-</class>
-<class name="com/google/zxing/oned/rss/RSS14Reader">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="decodeRow" type="(ILcom/google/zxing/common/BitArray;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
-<method name="reset" type="()V"/>
-</class>
-<class name="com/google/zxing/oned/UPCAReader">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="decodeRow" type="(ILcom/google/zxing/common/BitArray;[ILjava/util/Map;)Lcom/google/zxing/Result;"/>
-<method name="decodeRow" type="(ILcom/google/zxing/common/BitArray;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
-<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
-<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
-<method name="getBarcodeFormat" type="()Lcom/google/zxing/BarcodeFormat;"/>
-<method name="decodeMiddle" type="(Lcom/google/zxing/common/BitArray;[ILjava/lang/StringBuilder;)I"/>
-</class>
-<class name="com/google/zxing/oned/UPCEANReader">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="findStartGuardPattern" type="(Lcom/google/zxing/common/BitArray;)[I" class_method="true"/>
-<method name="decodeRow" type="(ILcom/google/zxing/common/BitArray;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
-<method name="decodeRow" type="(ILcom/google/zxing/common/BitArray;[ILjava/util/Map;)Lcom/google/zxing/Result;"/>
-<method name="checkChecksum" type="(Ljava/lang/String;)Z"/>
-<method name="checkStandardUPCEANChecksum" type="(Ljava/lang/CharSequence;)Z" class_method="true"/>
-<method name="decodeEnd" type="(Lcom/google/zxing/common/BitArray;I)[I"/>
-<method name="findGuardPattern" type="(Lcom/google/zxing/common/BitArray;IZ[I)[I" class_method="true"/>
-<method name="decodeDigit" type="(Lcom/google/zxing/common/BitArray;[II[[I)I" class_method="true"/>
-<method name="getBarcodeFormat" type="()Lcom/google/zxing/BarcodeFormat;"/>
-<method name="decodeMiddle" type="(Lcom/google/zxing/common/BitArray;[ILjava/lang/StringBuilder;)I"/>
-</class>
-<class name="com/google/zxing/oned/UPCEANWriter">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="getDefaultMargin" type="()I"/>
-</class>
-<class name="com/google/zxing/oned/UPCEReader">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="decodeMiddle" type="(Lcom/google/zxing/common/BitArray;[ILjava/lang/StringBuilder;)I"/>
-<method name="decodeEnd" type="(Lcom/google/zxing/common/BitArray;I)[I"/>
-<method name="checkChecksum" type="(Ljava/lang/String;)Z"/>
-<method name="getBarcodeFormat" type="()Lcom/google/zxing/BarcodeFormat;"/>
-<method name="convertUPCEtoUPCA" type="(Ljava/lang/String;)Ljava/lang/String;" class_method="true"/>
-</class>
-<class name="com/google/zxing/pdf417/decoder/DecodedBitStreamParser$Mode">
-<method name="values" type="()[Lcom/google/zxing/pdf417/decoder/DecodedBitStreamParser$Mode;" class_method="true"/>
-<method name="valueOf" type="(Ljava/lang/String;)Lcom/google/zxing/pdf417/decoder/DecodedBitStreamParser$Mode;" class_method="true"/>
-</class>
-<class name="com/google/zxing/pdf417/decoder/DetectionResultRowIndicatorColumn">
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/pdf417/decoder/BoundingBox;Z)V"/>
-<method name="setRowNumbers" type="()V"/>
-<method name="adjustCompleteIndicatorColumnRowNumbers" type="(Lcom/google/zxing/pdf417/decoder/BarcodeMetadata;)I"/>
-<method name="getRowHeights" type="()[I"/>
-<method name="adjustIncompleteIndicatorColumnRowNumbers" type="(Lcom/google/zxing/pdf417/decoder/BarcodeMetadata;)I"/>
-<method name="getBarcodeMetadata" type="()Lcom/google/zxing/pdf417/decoder/BarcodeMetadata;"/>
-<method name="isLeft" type="()Z"/>
-<method name="toString" type="()Ljava/lang/String;"/>
-</class>
-<class name="com/google/zxing/pdf417/encoder/Compaction">
-<method name="values" type="()[Lcom/google/zxing/pdf417/encoder/Compaction;" class_method="true"/>
-<method name="valueOf" type="(Ljava/lang/String;)Lcom/google/zxing/pdf417/encoder/Compaction;" class_method="true"/>
-</class>
-<class name="com/google/zxing/PlanarYUVLuminanceSource">
-<method name="&lt;init&gt;" type="([BIIIIIIZ)V"/>
-<method name="getRow" type="(I[B)[B"/>
-<method name="getMatrix" type="()[B"/>
-<method name="isCropSupported" type="()Z"/>
-<method name="crop" type="(IIII)Lcom/google/zxing/LuminanceSource;"/>
-<method name="renderThumbnail" type="()[I"/>
-<method name="getThumbnailWidth" type="()I"/>
-<method name="getThumbnailHeight" type="()I"/>
-</class>
-<class name="com/google/zxing/qrcode/decoder/DataMask$DataMask000">
-<method name="isMasked" type="(II)Z"/>
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/qrcode/decoder/DataMask$1;)V"/>
-</class>
-<class name="com/google/zxing/qrcode/decoder/DataMask$DataMask001">
-<method name="isMasked" type="(II)Z"/>
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/qrcode/decoder/DataMask$1;)V"/>
-</class>
-<class name="com/google/zxing/qrcode/decoder/DataMask$DataMask010">
-<method name="isMasked" type="(II)Z"/>
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/qrcode/decoder/DataMask$1;)V"/>
-</class>
-<class name="com/google/zxing/qrcode/decoder/DataMask$DataMask011">
-<method name="isMasked" type="(II)Z"/>
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/qrcode/decoder/DataMask$1;)V"/>
-</class>
-<class name="com/google/zxing/qrcode/decoder/DataMask$DataMask100">
-<method name="isMasked" type="(II)Z"/>
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/qrcode/decoder/DataMask$1;)V"/>
-</class>
-<class name="com/google/zxing/qrcode/decoder/DataMask$DataMask101">
-<method name="isMasked" type="(II)Z"/>
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/qrcode/decoder/DataMask$1;)V"/>
-</class>
-<class name="com/google/zxing/qrcode/decoder/DataMask$DataMask110">
-<method name="isMasked" type="(II)Z"/>
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/qrcode/decoder/DataMask$1;)V"/>
-</class>
-<class name="com/google/zxing/qrcode/decoder/DataMask$DataMask111">
-<method name="isMasked" type="(II)Z"/>
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/qrcode/decoder/DataMask$1;)V"/>
-</class>
-<class name="com/google/zxing/qrcode/decoder/ErrorCorrectionLevel">
-<method name="values" type="()[Lcom/google/zxing/qrcode/decoder/ErrorCorrectionLevel;" class_method="true"/>
-<method name="valueOf" type="(Ljava/lang/String;)Lcom/google/zxing/qrcode/decoder/ErrorCorrectionLevel;" class_method="true"/>
-<method name="getBits" type="()I"/>
-<method name="forBits" type="(I)Lcom/google/zxing/qrcode/decoder/ErrorCorrectionLevel;" class_method="true"/>
-</class>
-<class name="com/google/zxing/qrcode/decoder/Mode">
-<method name="values" type="()[Lcom/google/zxing/qrcode/decoder/Mode;" class_method="true"/>
-<method name="valueOf" type="(Ljava/lang/String;)Lcom/google/zxing/qrcode/decoder/Mode;" class_method="true"/>
-<method name="forBits" type="(I)Lcom/google/zxing/qrcode/decoder/Mode;" class_method="true"/>
-<method name="getCharacterCountBits" type="(Lcom/google/zxing/qrcode/decoder/Version;)I"/>
-<method name="getBits" type="()I"/>
-</class>
-<class name="com/google/zxing/qrcode/detector/AlignmentPattern">
-<method name="&lt;init&gt;" type="(FFF)V"/>
-<method name="aboutEquals" type="(FFF)Z"/>
-<method name="combineEstimate" type="(FFF)Lcom/google/zxing/qrcode/detector/AlignmentPattern;"/>
-</class>
-<class name="com/google/zxing/qrcode/detector/FinderPattern">
-<method name="&lt;init&gt;" type="(FFF)V"/>
-<method name="getEstimatedModuleSize" type="()F"/>
-<method name="getCount" type="()I"/>
-<method name="aboutEquals" type="(FFF)Z"/>
-<method name="combineEstimate" type="(FFF)Lcom/google/zxing/qrcode/detector/FinderPattern;"/>
-</class>
-<class name="com/google/zxing/ReaderException">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="fillInStackTrace" type="()Ljava/lang/Throwable;"/>
-</class>
-<class name="com/google/zxing/ResultMetadataType">
-<method name="values" type="()[Lcom/google/zxing/ResultMetadataType;" class_method="true"/>
-<method name="valueOf" type="(Ljava/lang/String;)Lcom/google/zxing/ResultMetadataType;" class_method="true"/>
-</class>
-<class name="com/google/zxing/RGBLuminanceSource">
-<method name="&lt;init&gt;" type="(II[I)V"/>
-<method name="getRow" type="(I[B)[B"/>
-<method name="getMatrix" type="()[B"/>
-<method name="isCropSupported" type="()Z"/>
-<method name="crop" type="(IIII)Lcom/google/zxing/LuminanceSource;"/>
-</class>
-<class name="com/google/zxing/WriterException">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="&lt;init&gt;" type="(Ljava/lang/String;)V"/>
-<method name="&lt;init&gt;" type="(Ljava/lang/Throwable;)V"/>
-</class>
-<class name="com/google/zxing/aztec/decoder/Decoder$1">
-</class>
-<class name="com/google/zxing/aztec/decoder/Decoder">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="decode" type="(Lcom/google/zxing/aztec/AztecDetectorResult;)Lcom/google/zxing/common/DecoderResult;"/>
-<method name="highLevelDecode" type="([Z)Ljava/lang/String;" class_method="true"/>
-<method name="extractBits" type="(Lcom/google/zxing/common/BitMatrix;)[Z"/>
-</class>
-<class name="com/google/zxing/aztec/detector/Detector$Point">
-<method name="toResultPoint" type="()Lcom/google/zxing/ResultPoint;"/>
-<method name="&lt;init&gt;" type="(II)V"/>
-<method name="getX" type="()I"/>
-<method name="getY" type="()I"/>
-<method name="toString" type="()Ljava/lang/String;"/>
-</class>
-<class name="com/google/zxing/aztec/detector/Detector">
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;)V"/>
-<method name="detect" type="()Lcom/google/zxing/aztec/AztecDetectorResult;"/>
-<method name="detect" type="(Z)Lcom/google/zxing/aztec/AztecDetectorResult;"/>
-</class>
-<class name="com/google/zxing/aztec/encoder/AztecCode">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="isCompact" type="()Z"/>
-<method name="setCompact" type="(Z)V"/>
-<method name="getSize" type="()I"/>
-<method name="setSize" type="(I)V"/>
-<method name="getLayers" type="()I"/>
-<method name="setLayers" type="(I)V"/>
-<method name="getCodeWords" type="()I"/>
-<method name="setCodeWords" type="(I)V"/>
-<method name="getMatrix" type="()Lcom/google/zxing/common/BitMatrix;"/>
-<method name="setMatrix" type="(Lcom/google/zxing/common/BitMatrix;)V"/>
-</class>
-<class name="com/google/zxing/aztec/encoder/Encoder">
-<method name="encode" type="([B)Lcom/google/zxing/aztec/encoder/AztecCode;" class_method="true"/>
-<method name="encode" type="([BII)Lcom/google/zxing/aztec/encoder/AztecCode;" class_method="true"/>
-<method name="generateModeMessage" type="(ZII)Lcom/google/zxing/common/BitArray;" class_method="true"/>
-<method name="stuffBits" type="(Lcom/google/zxing/common/BitArray;I)Lcom/google/zxing/common/BitArray;" class_method="true"/>
-</class>
-<class name="com/google/zxing/aztec/encoder/HighLevelEncoder">
-<method name="&lt;init&gt;" type="([B)V"/>
-<method name="encode" type="()Lcom/google/zxing/common/BitArray;"/>
-</class>
-<class name="com/google/zxing/aztec/encoder/State">
-<method name="getMode" type="()I"/>
-<method name="getToken" type="()Lcom/google/zxing/aztec/encoder/Token;"/>
-<method name="getBinaryShiftByteCount" type="()I"/>
-<method name="getBitCount" type="()I"/>
-<method name="latchAndAppend" type="(II)Lcom/google/zxing/aztec/encoder/State;"/>
-<method name="shiftAndAppend" type="(II)Lcom/google/zxing/aztec/encoder/State;"/>
-<method name="addBinaryShiftChar" type="(I)Lcom/google/zxing/aztec/encoder/State;"/>
-<method name="endBinaryShift" type="(I)Lcom/google/zxing/aztec/encoder/State;"/>
-<method name="isBetterThanOrEqualTo" type="(Lcom/google/zxing/aztec/encoder/State;)Z"/>
-<method name="toBitArray" type="([B)Lcom/google/zxing/common/BitArray;"/>
-<method name="toString" type="()Ljava/lang/String;"/>
-</class>
-<class name="com/google/zxing/aztec/encoder/Token">
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/aztec/encoder/Token;)V"/>
-<method name="getPrevious" type="()Lcom/google/zxing/aztec/encoder/Token;"/>
-<method name="add" type="(II)Lcom/google/zxing/aztec/encoder/Token;"/>
-<method name="addBinaryShift" type="(II)Lcom/google/zxing/aztec/encoder/Token;"/>
-<method name="appendTo" type="(Lcom/google/zxing/common/BitArray;[B)V"/>
-</class>
-<class name="com/google/zxing/Binarizer">
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/LuminanceSource;)V"/>
-<method name="getLuminanceSource" type="()Lcom/google/zxing/LuminanceSource;"/>
-<method name="getBlackRow" type="(ILcom/google/zxing/common/BitArray;)Lcom/google/zxing/common/BitArray;"/>
-<method name="getBlackMatrix" type="()Lcom/google/zxing/common/BitMatrix;"/>
-<method name="createBinarizer" type="(Lcom/google/zxing/LuminanceSource;)Lcom/google/zxing/Binarizer;"/>
-<method name="getWidth" type="()I"/>
-<method name="getHeight" type="()I"/>
-</class>
-<class name="com/google/zxing/BinaryBitmap">
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/Binarizer;)V"/>
-<method name="getWidth" type="()I"/>
-<method name="getHeight" type="()I"/>
-<method name="getBlackRow" type="(ILcom/google/zxing/common/BitArray;)Lcom/google/zxing/common/BitArray;"/>
-<method name="getBlackMatrix" type="()Lcom/google/zxing/common/BitMatrix;"/>
-<method name="isCropSupported" type="()Z"/>
-<method name="crop" type="(IIII)Lcom/google/zxing/BinaryBitmap;"/>
-<method name="isRotateSupported" type="()Z"/>
-<method name="rotateCounterClockwise" type="()Lcom/google/zxing/BinaryBitmap;"/>
-<method name="rotateCounterClockwise45" type="()Lcom/google/zxing/BinaryBitmap;"/>
-<method name="toString" type="()Ljava/lang/String;"/>
-</class>
-<class name="com/google/zxing/client/result/ParsedResult">
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/client/result/ParsedResultType;)V"/>
-<method name="getType" type="()Lcom/google/zxing/client/result/ParsedResultType;"/>
-<method name="getDisplayResult" type="()Ljava/lang/String;"/>
-<method name="toString" type="()Ljava/lang/String;"/>
-<method name="maybeAppend" type="(Ljava/lang/String;Ljava/lang/StringBuilder;)V" class_method="true"/>
-<method name="maybeAppend" type="([Ljava/lang/String;Ljava/lang/StringBuilder;)V" class_method="true"/>
-</class>
-<class name="com/google/zxing/client/result/ResultParser">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="parse" type="(Lcom/google/zxing/Result;)Lcom/google/zxing/client/result/ParsedResult;"/>
-<method name="getMassagedText" type="(Lcom/google/zxing/Result;)Ljava/lang/String;" class_method="true"/>
-<method name="parseResult" type="(Lcom/google/zxing/Result;)Lcom/google/zxing/client/result/ParsedResult;" class_method="true"/>
-<method name="maybeAppend" type="(Ljava/lang/String;Ljava/lang/StringBuilder;)V" class_method="true"/>
-<method name="maybeAppend" type="([Ljava/lang/String;Ljava/lang/StringBuilder;)V" class_method="true"/>
-<method name="maybeWrap" type="(Ljava/lang/String;)[Ljava/lang/String;" class_method="true"/>
-<method name="unescapeBackslash" type="(Ljava/lang/String;)Ljava/lang/String;" class_method="true"/>
-<method name="parseHexDigit" type="(C)I" class_method="true"/>
-<method name="isStringOfDigits" type="(Ljava/lang/CharSequence;I)Z" class_method="true"/>
-<method name="isSubstringOfDigits" type="(Ljava/lang/CharSequence;II)Z" class_method="true"/>
-<method name="parseNameValuePairs" type="(Ljava/lang/String;)Ljava/util/Map;" class_method="true"/>
-<method name="urlDecode" type="(Ljava/lang/String;)Ljava/lang/String;" class_method="true"/>
-<method name="matchPrefixedField" type="(Ljava/lang/String;Ljava/lang/String;CZ)[Ljava/lang/String;" class_method="true"/>
-<method name="matchSinglePrefixedField" type="(Ljava/lang/String;Ljava/lang/String;CZ)Ljava/lang/String;" class_method="true"/>
-</class>
-<class name="com/google/zxing/common/BitSource">
-<method name="&lt;init&gt;" type="([B)V"/>
-<method name="getBitOffset" type="()I"/>
-<method name="getByteOffset" type="()I"/>
-<method name="readBits" type="(I)I"/>
-<method name="available" type="()I"/>
-</class>
-<class name="com/google/zxing/common/DecoderResult">
-<method name="&lt;init&gt;" type="([BLjava/lang/String;Ljava/util/List;Ljava/lang/String;)V"/>
-<method name="&lt;init&gt;" type="([BLjava/lang/String;Ljava/util/List;Ljava/lang/String;II)V"/>
-<method name="getRawBytes" type="()[B"/>
-<method name="getText" type="()Ljava/lang/String;"/>
-<method name="getByteSegments" type="()Ljava/util/List;"/>
-<method name="getECLevel" type="()Ljava/lang/String;"/>
-<method name="getErrorsCorrected" type="()Ljava/lang/Integer;"/>
-<method name="setErrorsCorrected" type="(Ljava/lang/Integer;)V"/>
-<method name="getErasures" type="()Ljava/lang/Integer;"/>
-<method name="setErasures" type="(Ljava/lang/Integer;)V"/>
-<method name="getOther" type="()Ljava/lang/Object;"/>
-<method name="setOther" type="(Ljava/lang/Object;)V"/>
-<method name="hasStructuredAppend" type="()Z"/>
-<method name="getStructuredAppendParity" type="()I"/>
-<method name="getStructuredAppendSequenceNumber" type="()I"/>
-</class>
-<class name="com/google/zxing/common/detector/MathUtils">
-<method name="round" type="(F)I" class_method="true"/>
-<method name="distance" type="(FFFF)F" class_method="true"/>
-<method name="distance" type="(IIII)F" class_method="true"/>
-</class>
-<class name="com/google/zxing/common/detector/MonochromeRectangleDetector">
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;)V"/>
-<method name="detect" type="()[Lcom/google/zxing/ResultPoint;"/>
-</class>
-<class name="com/google/zxing/common/detector/WhiteRectangleDetector">
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;)V"/>
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;III)V"/>
-<method name="detect" type="()[Lcom/google/zxing/ResultPoint;"/>
-</class>
-<class name="com/google/zxing/common/DetectorResult">
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;[Lcom/google/zxing/ResultPoint;)V"/>
-<method name="getBits" type="()Lcom/google/zxing/common/BitMatrix;"/>
-<method name="getPoints" type="()[Lcom/google/zxing/ResultPoint;"/>
-</class>
-<class name="com/google/zxing/common/GridSampler">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="setGridSampler" type="(Lcom/google/zxing/common/GridSampler;)V" class_method="true"/>
-<method name="getInstance" type="()Lcom/google/zxing/common/GridSampler;" class_method="true"/>
-<method name="sampleGrid" type="(Lcom/google/zxing/common/BitMatrix;IIFFFFFFFFFFFFFFFF)Lcom/google/zxing/common/BitMatrix;"/>
-<method name="sampleGrid" type="(Lcom/google/zxing/common/BitMatrix;IILcom/google/zxing/common/PerspectiveTransform;)Lcom/google/zxing/common/BitMatrix;"/>
-<method name="checkAndNudgePoints" type="(Lcom/google/zxing/common/BitMatrix;[F)V" class_method="true"/>
-</class>
-<class name="com/google/zxing/common/PerspectiveTransform">
-<method name="quadrilateralToQuadrilateral" type="(FFFFFFFFFFFFFFFF)Lcom/google/zxing/common/PerspectiveTransform;" class_method="true"/>
-<method name="transformPoints" type="([F)V"/>
-<method name="transformPoints" type="([F[F)V"/>
-<method name="squareToQuadrilateral" type="(FFFFFFFF)Lcom/google/zxing/common/PerspectiveTransform;" class_method="true"/>
-<method name="quadrilateralToSquare" type="(FFFFFFFF)Lcom/google/zxing/common/PerspectiveTransform;" class_method="true"/>
-<method name="buildAdjoint" type="()Lcom/google/zxing/common/PerspectiveTransform;"/>
-<method name="times" type="(Lcom/google/zxing/common/PerspectiveTransform;)Lcom/google/zxing/common/PerspectiveTransform;"/>
-</class>
-<class name="com/google/zxing/common/reedsolomon/GenericGF">
-<method name="&lt;init&gt;" type="(III)V"/>
-<method name="getZero" type="()Lcom/google/zxing/common/reedsolomon/GenericGFPoly;"/>
-<method name="getOne" type="()Lcom/google/zxing/common/reedsolomon/GenericGFPoly;"/>
-<method name="buildMonomial" type="(II)Lcom/google/zxing/common/reedsolomon/GenericGFPoly;"/>
-<method name="addOrSubtract" type="(II)I" class_method="true"/>
-<method name="exp" type="(I)I"/>
-<method name="log" type="(I)I"/>
-<method name="inverse" type="(I)I"/>
-<method name="multiply" type="(II)I"/>
-<method name="getSize" type="()I"/>
-<method name="getGeneratorBase" type="()I"/>
-<method name="toString" type="()Ljava/lang/String;"/>
-</class>
-<class name="com/google/zxing/common/reedsolomon/GenericGFPoly">
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/reedsolomon/GenericGF;[I)V"/>
-<method name="getCoefficients" type="()[I"/>
-<method name="getDegree" type="()I"/>
-<method name="isZero" type="()Z"/>
-<method name="getCoefficient" type="(I)I"/>
-<method name="evaluateAt" type="(I)I"/>
-<method name="addOrSubtract" type="(Lcom/google/zxing/common/reedsolomon/GenericGFPoly;)Lcom/google/zxing/common/reedsolomon/GenericGFPoly;"/>
-<method name="multiply" type="(Lcom/google/zxing/common/reedsolomon/GenericGFPoly;)Lcom/google/zxing/common/reedsolomon/GenericGFPoly;"/>
-<method name="multiply" type="(I)Lcom/google/zxing/common/reedsolomon/GenericGFPoly;"/>
-<method name="multiplyByMonomial" type="(II)Lcom/google/zxing/common/reedsolomon/GenericGFPoly;"/>
-<method name="divide" type="(Lcom/google/zxing/common/reedsolomon/GenericGFPoly;)[Lcom/google/zxing/common/reedsolomon/GenericGFPoly;"/>
-<method name="toString" type="()Ljava/lang/String;"/>
-</class>
-<class name="com/google/zxing/common/reedsolomon/ReedSolomonDecoder">
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/reedsolomon/GenericGF;)V"/>
-<method name="decode" type="([II)V"/>
-</class>
-<class name="com/google/zxing/common/reedsolomon/ReedSolomonEncoder">
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/reedsolomon/GenericGF;)V"/>
-<method name="encode" type="([II)V"/>
-</class>
-<class name="com/google/zxing/common/StringUtils">
-<method name="guessEncoding" type="([BLjava/util/Map;)Ljava/lang/String;" class_method="true"/>
-</class>
-<class name="com/google/zxing/datamatrix/decoder/BitMatrixParser">
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;)V"/>
-<method name="getVersion" type="()Lcom/google/zxing/datamatrix/decoder/Version;"/>
-<method name="readCodewords" type="()[B"/>
-<method name="readModule" type="(IIII)Z"/>
-<method name="readUtah" type="(IIII)I"/>
-<method name="readCorner1" type="(II)I"/>
-<method name="readCorner2" type="(II)I"/>
-<method name="readCorner3" type="(II)I"/>
-<method name="readCorner4" type="(II)I"/>
-<method name="extractDataRegion" type="(Lcom/google/zxing/common/BitMatrix;)Lcom/google/zxing/common/BitMatrix;"/>
-</class>
-<class name="com/google/zxing/datamatrix/decoder/DataBlock">
-<method name="getDataBlocks" type="([BLcom/google/zxing/datamatrix/decoder/Version;)[Lcom/google/zxing/datamatrix/decoder/DataBlock;" class_method="true"/>
-<method name="getNumDataCodewords" type="()I"/>
-<method name="getCodewords" type="()[B"/>
-</class>
-<class name="com/google/zxing/datamatrix/decoder/DecodedBitStreamParser$1">
-</class>
-<class name="com/google/zxing/datamatrix/decoder/DecodedBitStreamParser">
-<method name="decode" type="([B)Lcom/google/zxing/common/DecoderResult;" class_method="true"/>
-</class>
-<class name="com/google/zxing/datamatrix/decoder/Decoder">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="decode" type="([[Z)Lcom/google/zxing/common/DecoderResult;"/>
-<method name="decode" type="(Lcom/google/zxing/common/BitMatrix;)Lcom/google/zxing/common/DecoderResult;"/>
-</class>
-<class name="com/google/zxing/datamatrix/decoder/Version$1">
-</class>
-<class name="com/google/zxing/datamatrix/decoder/Version$ECB">
-<method name="getCount" type="()I"/>
-<method name="getDataCodewords" type="()I"/>
-<method name="&lt;init&gt;" type="(IILcom/google/zxing/datamatrix/decoder/Version$1;)V"/>
-</class>
-<class name="com/google/zxing/datamatrix/decoder/Version$ECBlocks">
-<method name="getECCodewords" type="()I"/>
-<method name="getECBlocks" type="()[Lcom/google/zxing/datamatrix/decoder/Version$ECB;"/>
-<method name="&lt;init&gt;" type="(ILcom/google/zxing/datamatrix/decoder/Version$ECB;Lcom/google/zxing/datamatrix/decoder/Version$1;)V"/>
-<method name="&lt;init&gt;" type="(ILcom/google/zxing/datamatrix/decoder/Version$ECB;Lcom/google/zxing/datamatrix/decoder/Version$ECB;Lcom/google/zxing/datamatrix/decoder/Version$1;)V"/>
-</class>
-<class name="com/google/zxing/datamatrix/decoder/Version">
-<method name="getVersionNumber" type="()I"/>
-<method name="getSymbolSizeRows" type="()I"/>
-<method name="getSymbolSizeColumns" type="()I"/>
-<method name="getDataRegionSizeRows" type="()I"/>
-<method name="getDataRegionSizeColumns" type="()I"/>
-<method name="getTotalCodewords" type="()I"/>
-<method name="getECBlocks" type="()Lcom/google/zxing/datamatrix/decoder/Version$ECBlocks;"/>
-<method name="getVersionForDimensions" type="(II)Lcom/google/zxing/datamatrix/decoder/Version;" class_method="true"/>
-<method name="toString" type="()Ljava/lang/String;"/>
-</class>
-<class name="com/google/zxing/datamatrix/detector/Detector$1">
-</class>
-<class name="com/google/zxing/datamatrix/detector/Detector$ResultPointsAndTransitions">
-<method name="getFrom" type="()Lcom/google/zxing/ResultPoint;"/>
-<method name="getTo" type="()Lcom/google/zxing/ResultPoint;"/>
-<method name="getTransitions" type="()I"/>
-<method name="toString" type="()Ljava/lang/String;"/>
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/ResultPoint;Lcom/google/zxing/ResultPoint;ILcom/google/zxing/datamatrix/detector/Detector$1;)V"/>
-</class>
-<class name="com/google/zxing/datamatrix/detector/Detector">
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;)V"/>
-<method name="detect" type="()Lcom/google/zxing/common/DetectorResult;"/>
-</class>
-<class name="com/google/zxing/datamatrix/encoder/DefaultPlacement">
-<method name="&lt;init&gt;" type="(Ljava/lang/CharSequence;II)V"/>
-<method name="getNumrows" type="()I"/>
-<method name="getNumcols" type="()I"/>
-<method name="getBits" type="()[B"/>
-<method name="getBit" type="(II)Z"/>
-<method name="setBit" type="(IIZ)V"/>
-<method name="hasBit" type="(II)Z"/>
-<method name="place" type="()V"/>
-</class>
-<class name="com/google/zxing/datamatrix/encoder/EncoderContext">
-<method name="&lt;init&gt;" type="(Ljava/lang/String;)V"/>
-<method name="setSymbolShape" type="(Lcom/google/zxing/datamatrix/encoder/SymbolShapeHint;)V"/>
-<method name="setSizeConstraints" type="(Lcom/google/zxing/Dimension;Lcom/google/zxing/Dimension;)V"/>
-<method name="getMessage" type="()Ljava/lang/String;"/>
-<method name="setSkipAtEnd" type="(I)V"/>
-<method name="getCurrentChar" type="()C"/>
-<method name="getCurrent" type="()C"/>
-<method name="getCodewords" type="()Ljava/lang/StringBuilder;"/>
-<method name="writeCodewords" type="(Ljava/lang/String;)V"/>
-<method name="writeCodeword" type="(C)V"/>
-<method name="getCodewordCount" type="()I"/>
-<method name="getNewEncoding" type="()I"/>
-<method name="signalEncoderChange" type="(I)V"/>
-<method name="resetEncoderSignal" type="()V"/>
-<method name="hasMoreCharacters" type="()Z"/>
-<method name="getRemainingCharacters" type="()I"/>
-<method name="getSymbolInfo" type="()Lcom/google/zxing/datamatrix/encoder/SymbolInfo;"/>
-<method name="updateSymbolInfo" type="()V"/>
-<method name="updateSymbolInfo" type="(I)V"/>
-<method name="resetSymbolInfo" type="()V"/>
-</class>
-<class name="com/google/zxing/datamatrix/encoder/ErrorCorrection">
-<method name="encodeECC200" type="(Ljava/lang/String;Lcom/google/zxing/datamatrix/encoder/SymbolInfo;)Ljava/lang/String;" class_method="true"/>
-</class>
-<class name="com/google/zxing/datamatrix/encoder/HighLevelEncoder">
-<method name="encodeHighLevel" type="(Ljava/lang/String;)Ljava/lang/String;" class_method="true"/>
-<method name="encodeHighLevel" type="(Ljava/lang/String;Lcom/google/zxing/datamatrix/encoder/SymbolShapeHint;Lcom/google/zxing/Dimension;Lcom/google/zxing/Dimension;)Ljava/lang/String;" class_method="true"/>
-<method name="lookAheadTest" type="(Ljava/lang/CharSequence;II)I" class_method="true"/>
-<method name="isDigit" type="(C)Z" class_method="true"/>
-<method name="isExtendedASCII" type="(C)Z" class_method="true"/>
-<method name="determineConsecutiveDigitCount" type="(Ljava/lang/CharSequence;I)I" class_method="true"/>
-<method name="illegalCharacter" type="(C)V" class_method="true"/>
-</class>
-<class name="com/google/zxing/datamatrix/encoder/SymbolInfo">
-<method name="overrideSymbolSet" type="([Lcom/google/zxing/datamatrix/encoder/SymbolInfo;)V" class_method="true"/>
-<method name="&lt;init&gt;" type="(ZIIIII)V"/>
-<method name="&lt;init&gt;" type="(ZIIIIIII)V"/>
-<method name="lookup" type="(I)Lcom/google/zxing/datamatrix/encoder/SymbolInfo;" class_method="true"/>
-<method name="lookup" type="(ILcom/google/zxing/datamatrix/encoder/SymbolShapeHint;)Lcom/google/zxing/datamatrix/encoder/SymbolInfo;" class_method="true"/>
-<method name="lookup" type="(IZZ)Lcom/google/zxing/datamatrix/encoder/SymbolInfo;" class_method="true"/>
-<method name="lookup" type="(ILcom/google/zxing/datamatrix/encoder/SymbolShapeHint;Lcom/google/zxing/Dimension;Lcom/google/zxing/Dimension;Z)Lcom/google/zxing/datamatrix/encoder/SymbolInfo;" class_method="true"/>
-<method name="getHorizontalDataRegions" type="()I"/>
-<method name="getVerticalDataRegions" type="()I"/>
-<method name="getSymbolDataWidth" type="()I"/>
-<method name="getSymbolDataHeight" type="()I"/>
-<method name="getSymbolWidth" type="()I"/>
-<method name="getSymbolHeight" type="()I"/>
-<method name="getCodewordCount" type="()I"/>
-<method name="getInterleavedBlockCount" type="()I"/>
-<method name="getDataCapacity" type="()I"/>
-<method name="getErrorCodewords" type="()I"/>
-<method name="getDataLengthForInterleavedBlock" type="(I)I"/>
-<method name="getErrorLengthForInterleavedBlock" type="(I)I"/>
-<method name="toString" type="()Ljava/lang/String;"/>
-</class>
-<class name="com/google/zxing/Dimension">
-<method name="&lt;init&gt;" type="(II)V"/>
-<method name="getWidth" type="()I"/>
-<method name="getHeight" type="()I"/>
-<method name="equals" type="(Ljava/lang/Object;)Z"/>
-<method name="hashCode" type="()I"/>
-<method name="toString" type="()Ljava/lang/String;"/>
-</class>
-<class name="com/google/zxing/LuminanceSource">
-<method name="&lt;init&gt;" type="(II)V"/>
-<method name="getRow" type="(I[B)[B"/>
-<method name="getMatrix" type="()[B"/>
-<method name="getWidth" type="()I"/>
-<method name="getHeight" type="()I"/>
-<method name="isCropSupported" type="()Z"/>
-<method name="crop" type="(IIII)Lcom/google/zxing/LuminanceSource;"/>
-<method name="isRotateSupported" type="()Z"/>
-<method name="invert" type="()Lcom/google/zxing/LuminanceSource;"/>
-<method name="rotateCounterClockwise" type="()Lcom/google/zxing/LuminanceSource;"/>
-<method name="rotateCounterClockwise45" type="()Lcom/google/zxing/LuminanceSource;"/>
-<method name="toString" type="()Ljava/lang/String;"/>
-</class>
-<class name="com/google/zxing/maxicode/decoder/BitMatrixParser">
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;)V"/>
-<method name="readCodewords" type="()[B"/>
-</class>
-<class name="com/google/zxing/maxicode/decoder/DecodedBitStreamParser">
-<method name="decode" type="([BI)Lcom/google/zxing/common/DecoderResult;" class_method="true"/>
-</class>
-<class name="com/google/zxing/maxicode/decoder/Decoder">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="decode" type="(Lcom/google/zxing/common/BitMatrix;)Lcom/google/zxing/common/DecoderResult;"/>
-<method name="decode" type="(Lcom/google/zxing/common/BitMatrix;Ljava/util/Map;)Lcom/google/zxing/common/DecoderResult;"/>
-</class>
-<class name="com/google/zxing/multi/qrcode/detector/MultiFinderPatternFinder$1">
-</class>
-<class name="com/google/zxing/multi/qrcode/QRCodeMultiReader$1">
-</class>
-<class name="com/google/zxing/MultiFormatWriter$1">
-</class>
-<class name="com/google/zxing/oned/EANManufacturerOrgSupport">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="lookupCountryIdentifier" type="(Ljava/lang/String;)Ljava/lang/String;"/>
-</class>
-<class name="com/google/zxing/oned/rss/DataCharacter">
-<method name="&lt;init&gt;" type="(II)V"/>
-<method name="getValue" type="()I"/>
-<method name="getChecksumPortion" type="()I"/>
-<method name="toString" type="()Ljava/lang/String;"/>
-<method name="equals" type="(Ljava/lang/Object;)Z"/>
-<method name="hashCode" type="()I"/>
-</class>
-<class name="com/google/zxing/oned/rss/expanded/BitArrayBuilder">
-<method name="buildBitArray" type="(Ljava/util/List;)Lcom/google/zxing/common/BitArray;" class_method="true"/>
-</class>
-<class name="com/google/zxing/oned/rss/expanded/decoders/AbstractExpandedDecoder">
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitArray;)V"/>
-<method name="getInformation" type="()Lcom/google/zxing/common/BitArray;"/>
-<method name="getGeneralDecoder" type="()Lcom/google/zxing/oned/rss/expanded/decoders/GeneralAppIdDecoder;"/>
-<method name="parseInformation" type="()Ljava/lang/String;"/>
-<method name="createDecoder" type="(Lcom/google/zxing/common/BitArray;)Lcom/google/zxing/oned/rss/expanded/decoders/AbstractExpandedDecoder;" class_method="true"/>
-</class>
-<class name="com/google/zxing/oned/rss/expanded/decoders/BlockParsedResult">
-<method name="&lt;init&gt;" type="(Z)V"/>
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/oned/rss/expanded/decoders/DecodedInformation;Z)V"/>
-<method name="getDecodedInformation" type="()Lcom/google/zxing/oned/rss/expanded/decoders/DecodedInformation;"/>
-<method name="isFinished" type="()Z"/>
-</class>
-<class name="com/google/zxing/oned/rss/expanded/decoders/CurrentParsingState">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="getPosition" type="()I"/>
-<method name="setPosition" type="(I)V"/>
-<method name="incrementPosition" type="(I)V"/>
-<method name="isAlpha" type="()Z"/>
-<method name="isNumeric" type="()Z"/>
-<method name="isIsoIec646" type="()Z"/>
-<method name="setNumeric" type="()V"/>
-<method name="setAlpha" type="()V"/>
-<method name="setIsoIec646" type="()V"/>
 </class>
 <class name="com/google/zxing/oned/rss/expanded/decoders/DecodedObject">
 <method name="&lt;init&gt;" type="(I)V"/>
@@ -1144,6 +1147,16 @@
 <method name="equals" type="(Ljava/lang/Object;)Z"/>
 <method name="hashCode" type="()I"/>
 </class>
+<class name="com/google/zxing/oned/rss/expanded/RSSExpandedReader">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="decodeRow" type="(ILcom/google/zxing/common/BitArray;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
+<method name="reset" type="()V"/>
+<method name="decodeRow2pairs" type="(ILcom/google/zxing/common/BitArray;)Ljava/util/List;"/>
+<method name="getRows" type="()Ljava/util/List;"/>
+<method name="constructResult" type="(Ljava/util/List;)Lcom/google/zxing/Result;" class_method="true"/>
+<method name="retrieveNextPair" type="(Lcom/google/zxing/common/BitArray;Ljava/util/List;I)Lcom/google/zxing/oned/rss/expanded/ExpandedPair;"/>
+<method name="decodeDataCharacter" type="(Lcom/google/zxing/common/BitArray;Lcom/google/zxing/oned/rss/FinderPattern;ZZ)Lcom/google/zxing/oned/rss/DataCharacter;"/>
+</class>
 <class name="com/google/zxing/oned/rss/FinderPattern">
 <method name="&lt;init&gt;" type="(I[IIII)V"/>
 <method name="getValue" type="()I"/>
@@ -1152,8 +1165,33 @@
 <method name="equals" type="(Ljava/lang/Object;)Z"/>
 <method name="hashCode" type="()I"/>
 </class>
+<class name="com/google/zxing/oned/rss/Pair">
+<method name="&lt;init&gt;" type="(IILcom/google/zxing/oned/rss/FinderPattern;)V"/>
+<method name="getFinderPattern" type="()Lcom/google/zxing/oned/rss/FinderPattern;"/>
+<method name="getCount" type="()I"/>
+<method name="incrementCount" type="()V"/>
+</class>
+<class name="com/google/zxing/oned/rss/RSS14Reader">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="decodeRow" type="(ILcom/google/zxing/common/BitArray;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
+<method name="reset" type="()V"/>
+</class>
 <class name="com/google/zxing/oned/rss/RSSUtils">
 <method name="getRSSvalue" type="([IIZ)I" class_method="true"/>
+</class>
+<class name="com/google/zxing/oned/UPCAReader">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="decodeRow" type="(ILcom/google/zxing/common/BitArray;[ILjava/util/Map;)Lcom/google/zxing/Result;"/>
+<method name="decodeRow" type="(ILcom/google/zxing/common/BitArray;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
+<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
+<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
+<method name="getBarcodeFormat" type="()Lcom/google/zxing/BarcodeFormat;"/>
+<method name="decodeMiddle" type="(Lcom/google/zxing/common/BitArray;[ILjava/lang/StringBuilder;)I"/>
+</class>
+<class name="com/google/zxing/oned/UPCAWriter">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;II)Lcom/google/zxing/common/BitMatrix;"/>
+<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;IILjava/util/Map;)Lcom/google/zxing/common/BitMatrix;"/>
 </class>
 <class name="com/google/zxing/oned/UPCEANExtension2Support">
 <method name="&lt;init&gt;" type="()V"/>
@@ -1168,6 +1206,31 @@
 <class name="com/google/zxing/oned/UPCEANExtensionSupport">
 <method name="&lt;init&gt;" type="()V"/>
 <method name="decodeRow" type="(ILcom/google/zxing/common/BitArray;I)Lcom/google/zxing/Result;"/>
+</class>
+<class name="com/google/zxing/oned/UPCEANReader">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="findStartGuardPattern" type="(Lcom/google/zxing/common/BitArray;)[I" class_method="true"/>
+<method name="decodeRow" type="(ILcom/google/zxing/common/BitArray;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
+<method name="decodeRow" type="(ILcom/google/zxing/common/BitArray;[ILjava/util/Map;)Lcom/google/zxing/Result;"/>
+<method name="checkChecksum" type="(Ljava/lang/String;)Z"/>
+<method name="checkStandardUPCEANChecksum" type="(Ljava/lang/CharSequence;)Z" class_method="true"/>
+<method name="decodeEnd" type="(Lcom/google/zxing/common/BitArray;I)[I"/>
+<method name="findGuardPattern" type="(Lcom/google/zxing/common/BitArray;IZ[I)[I" class_method="true"/>
+<method name="decodeDigit" type="(Lcom/google/zxing/common/BitArray;[II[[I)I" class_method="true"/>
+<method name="getBarcodeFormat" type="()Lcom/google/zxing/BarcodeFormat;"/>
+<method name="decodeMiddle" type="(Lcom/google/zxing/common/BitArray;[ILjava/lang/StringBuilder;)I"/>
+</class>
+<class name="com/google/zxing/oned/UPCEANWriter">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="getDefaultMargin" type="()I"/>
+</class>
+<class name="com/google/zxing/oned/UPCEReader">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="decodeMiddle" type="(Lcom/google/zxing/common/BitArray;[ILjava/lang/StringBuilder;)I"/>
+<method name="decodeEnd" type="(Lcom/google/zxing/common/BitArray;I)[I"/>
+<method name="checkChecksum" type="(Ljava/lang/String;)Z"/>
+<method name="getBarcodeFormat" type="()Lcom/google/zxing/BarcodeFormat;"/>
+<method name="convertUPCEtoUPCA" type="(Ljava/lang/String;)Ljava/lang/String;" class_method="true"/>
 </class>
 <class name="com/google/zxing/pdf417/decoder/BarcodeMetadata">
 <method name="&lt;init&gt;" type="(IIII)V"/>
@@ -1213,6 +1276,10 @@
 </class>
 <class name="com/google/zxing/pdf417/decoder/DecodedBitStreamParser$1">
 </class>
+<class name="com/google/zxing/pdf417/decoder/DecodedBitStreamParser$Mode">
+<method name="values" type="()[Lcom/google/zxing/pdf417/decoder/DecodedBitStreamParser$Mode;" class_method="true"/>
+<method name="valueOf" type="(Ljava/lang/String;)Lcom/google/zxing/pdf417/decoder/DecodedBitStreamParser$Mode;" class_method="true"/>
+</class>
 <class name="com/google/zxing/pdf417/decoder/DecodedBitStreamParser">
 <method name="decode" type="([ILjava/lang/String;)Lcom/google/zxing/common/DecoderResult;" class_method="true"/>
 </class>
@@ -1236,6 +1303,16 @@
 <method name="getCodeword" type="(I)Lcom/google/zxing/pdf417/decoder/Codeword;"/>
 <method name="getBoundingBox" type="()Lcom/google/zxing/pdf417/decoder/BoundingBox;"/>
 <method name="getCodewords" type="()[Lcom/google/zxing/pdf417/decoder/Codeword;"/>
+<method name="toString" type="()Ljava/lang/String;"/>
+</class>
+<class name="com/google/zxing/pdf417/decoder/DetectionResultRowIndicatorColumn">
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/pdf417/decoder/BoundingBox;Z)V"/>
+<method name="setRowNumbers" type="()V"/>
+<method name="adjustCompleteIndicatorColumnRowNumbers" type="(Lcom/google/zxing/pdf417/decoder/BarcodeMetadata;)I"/>
+<method name="getRowHeights" type="()[I"/>
+<method name="adjustIncompleteIndicatorColumnRowNumbers" type="(Lcom/google/zxing/pdf417/decoder/BarcodeMetadata;)I"/>
+<method name="getBarcodeMetadata" type="()Lcom/google/zxing/pdf417/decoder/BarcodeMetadata;"/>
+<method name="isLeft" type="()Z"/>
 <method name="toString" type="()Ljava/lang/String;"/>
 </class>
 <class name="com/google/zxing/pdf417/decoder/ec/ErrorCorrection">
@@ -1300,6 +1377,10 @@
 <method name="addBar" type="(ZI)V"/>
 <method name="getScaledRow" type="(I)[B"/>
 </class>
+<class name="com/google/zxing/pdf417/encoder/Compaction">
+<method name="values" type="()[Lcom/google/zxing/pdf417/encoder/Compaction;" class_method="true"/>
+<method name="valueOf" type="(Ljava/lang/String;)Lcom/google/zxing/pdf417/encoder/Compaction;" class_method="true"/>
+</class>
 <class name="com/google/zxing/pdf417/encoder/Dimensions">
 <method name="&lt;init&gt;" type="(IIII)V"/>
 <method name="getMinCols" type="()I"/>
@@ -1330,6 +1411,14 @@
 <method name="toIntArray" type="(Ljava/util/Collection;)[I" class_method="true"/>
 <method name="getCodeword" type="(I)I" class_method="true"/>
 </class>
+<class name="com/google/zxing/pdf417/PDF417Reader">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
+<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
+<method name="decodeMultiple" type="(Lcom/google/zxing/BinaryBitmap;)[Lcom/google/zxing/Result;"/>
+<method name="decodeMultiple" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)[Lcom/google/zxing/Result;"/>
+<method name="reset" type="()V"/>
+</class>
 <class name="com/google/zxing/pdf417/PDF417ResultMetadata">
 <method name="&lt;init&gt;" type="()V"/>
 <method name="getSegmentIndex" type="()I"/>
@@ -1340,6 +1429,21 @@
 <method name="setOptionalData" type="([I)V"/>
 <method name="isLastSegment" type="()Z"/>
 <method name="setLastSegment" type="(Z)V"/>
+</class>
+<class name="com/google/zxing/pdf417/PDF417Writer">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;IILjava/util/Map;)Lcom/google/zxing/common/BitMatrix;"/>
+<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;II)Lcom/google/zxing/common/BitMatrix;"/>
+</class>
+<class name="com/google/zxing/PlanarYUVLuminanceSource">
+<method name="&lt;init&gt;" type="([BIIIIIIZ)V"/>
+<method name="getRow" type="(I[B)[B"/>
+<method name="getMatrix" type="()[B"/>
+<method name="isCropSupported" type="()Z"/>
+<method name="crop" type="(IIII)Lcom/google/zxing/LuminanceSource;"/>
+<method name="renderThumbnail" type="()[I"/>
+<method name="getThumbnailWidth" type="()I"/>
+<method name="getThumbnailHeight" type="()I"/>
 </class>
 <class name="com/google/zxing/qrcode/decoder/BitMatrixParser">
 <method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;)V"/>
@@ -1357,6 +1461,38 @@
 </class>
 <class name="com/google/zxing/qrcode/decoder/DataMask$1">
 </class>
+<class name="com/google/zxing/qrcode/decoder/DataMask$DataMask000">
+<method name="isMasked" type="(II)Z"/>
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/qrcode/decoder/DataMask$1;)V"/>
+</class>
+<class name="com/google/zxing/qrcode/decoder/DataMask$DataMask001">
+<method name="isMasked" type="(II)Z"/>
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/qrcode/decoder/DataMask$1;)V"/>
+</class>
+<class name="com/google/zxing/qrcode/decoder/DataMask$DataMask010">
+<method name="isMasked" type="(II)Z"/>
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/qrcode/decoder/DataMask$1;)V"/>
+</class>
+<class name="com/google/zxing/qrcode/decoder/DataMask$DataMask011">
+<method name="isMasked" type="(II)Z"/>
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/qrcode/decoder/DataMask$1;)V"/>
+</class>
+<class name="com/google/zxing/qrcode/decoder/DataMask$DataMask100">
+<method name="isMasked" type="(II)Z"/>
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/qrcode/decoder/DataMask$1;)V"/>
+</class>
+<class name="com/google/zxing/qrcode/decoder/DataMask$DataMask101">
+<method name="isMasked" type="(II)Z"/>
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/qrcode/decoder/DataMask$1;)V"/>
+</class>
+<class name="com/google/zxing/qrcode/decoder/DataMask$DataMask110">
+<method name="isMasked" type="(II)Z"/>
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/qrcode/decoder/DataMask$1;)V"/>
+</class>
+<class name="com/google/zxing/qrcode/decoder/DataMask$DataMask111">
+<method name="isMasked" type="(II)Z"/>
+<method name="&lt;init&gt;" type="(Lcom/google/zxing/qrcode/decoder/DataMask$1;)V"/>
+</class>
 <class name="com/google/zxing/qrcode/decoder/DataMask">
 <method name="unmaskBitMatrix" type="(Lcom/google/zxing/common/BitMatrix;I)V"/>
 <method name="isMasked" type="(II)Z"/>
@@ -1373,6 +1509,12 @@
 <method name="decode" type="(Lcom/google/zxing/common/BitMatrix;)Lcom/google/zxing/common/DecoderResult;"/>
 <method name="decode" type="(Lcom/google/zxing/common/BitMatrix;Ljava/util/Map;)Lcom/google/zxing/common/DecoderResult;"/>
 </class>
+<class name="com/google/zxing/qrcode/decoder/ErrorCorrectionLevel">
+<method name="values" type="()[Lcom/google/zxing/qrcode/decoder/ErrorCorrectionLevel;" class_method="true"/>
+<method name="valueOf" type="(Ljava/lang/String;)Lcom/google/zxing/qrcode/decoder/ErrorCorrectionLevel;" class_method="true"/>
+<method name="getBits" type="()I"/>
+<method name="forBits" type="(I)Lcom/google/zxing/qrcode/decoder/ErrorCorrectionLevel;" class_method="true"/>
+</class>
 <class name="com/google/zxing/qrcode/decoder/FormatInformation">
 <method name="numBitsDiffering" type="(II)I" class_method="true"/>
 <method name="decodeFormatInformation" type="(II)Lcom/google/zxing/qrcode/decoder/FormatInformation;" class_method="true"/>
@@ -1380,6 +1522,13 @@
 <method name="getDataMask" type="()B"/>
 <method name="hashCode" type="()I"/>
 <method name="equals" type="(Ljava/lang/Object;)Z"/>
+</class>
+<class name="com/google/zxing/qrcode/decoder/Mode">
+<method name="values" type="()[Lcom/google/zxing/qrcode/decoder/Mode;" class_method="true"/>
+<method name="valueOf" type="(Ljava/lang/String;)Lcom/google/zxing/qrcode/decoder/Mode;" class_method="true"/>
+<method name="forBits" type="(I)Lcom/google/zxing/qrcode/decoder/Mode;" class_method="true"/>
+<method name="getCharacterCountBits" type="(Lcom/google/zxing/qrcode/decoder/Version;)I"/>
+<method name="getBits" type="()I"/>
 </class>
 <class name="com/google/zxing/qrcode/decoder/QRCodeDecoderMetaData">
 <method name="&lt;init&gt;" type="(Z)V"/>
@@ -1410,6 +1559,11 @@
 <method name="buildFunctionPattern" type="()Lcom/google/zxing/common/BitMatrix;"/>
 <method name="toString" type="()Ljava/lang/String;"/>
 </class>
+<class name="com/google/zxing/qrcode/detector/AlignmentPattern">
+<method name="&lt;init&gt;" type="(FFF)V"/>
+<method name="aboutEquals" type="(FFF)Z"/>
+<method name="combineEstimate" type="(FFF)Lcom/google/zxing/qrcode/detector/AlignmentPattern;"/>
+</class>
 <class name="com/google/zxing/qrcode/detector/AlignmentPatternFinder">
 <method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;IIIIFLcom/google/zxing/ResultPointCallback;)V"/>
 <method name="find" type="()Lcom/google/zxing/qrcode/detector/AlignmentPattern;"/>
@@ -1424,7 +1578,24 @@
 <method name="calculateModuleSize" type="(Lcom/google/zxing/ResultPoint;Lcom/google/zxing/ResultPoint;Lcom/google/zxing/ResultPoint;)F"/>
 <method name="findAlignmentInRegion" type="(FIIF)Lcom/google/zxing/qrcode/detector/AlignmentPattern;"/>
 </class>
+<class name="com/google/zxing/qrcode/detector/FinderPattern">
+<method name="&lt;init&gt;" type="(FFF)V"/>
+<method name="getEstimatedModuleSize" type="()F"/>
+<method name="getCount" type="()I"/>
+<method name="aboutEquals" type="(FFF)Z"/>
+<method name="combineEstimate" type="(FFF)Lcom/google/zxing/qrcode/detector/FinderPattern;"/>
+</class>
 <class name="com/google/zxing/qrcode/detector/FinderPatternFinder$1">
+</class>
+<class name="com/google/zxing/qrcode/detector/FinderPatternFinder$CenterComparator">
+<method name="compare" type="(Lcom/google/zxing/qrcode/detector/FinderPattern;Lcom/google/zxing/qrcode/detector/FinderPattern;)I"/>
+<method name="compare" type="(Ljava/lang/Object;Ljava/lang/Object;)I"/>
+<method name="&lt;init&gt;" type="(FLcom/google/zxing/qrcode/detector/FinderPatternFinder$1;)V"/>
+</class>
+<class name="com/google/zxing/qrcode/detector/FinderPatternFinder$FurthestFromAverageComparator">
+<method name="compare" type="(Lcom/google/zxing/qrcode/detector/FinderPattern;Lcom/google/zxing/qrcode/detector/FinderPattern;)I"/>
+<method name="compare" type="(Ljava/lang/Object;Ljava/lang/Object;)I"/>
+<method name="&lt;init&gt;" type="(FLcom/google/zxing/qrcode/detector/FinderPatternFinder$1;)V"/>
 </class>
 <class name="com/google/zxing/qrcode/detector/FinderPatternFinder">
 <method name="&lt;init&gt;" type="(Lcom/google/zxing/common/BitMatrix;)V"/>
@@ -1511,6 +1682,22 @@
 <method name="setMatrix" type="(Lcom/google/zxing/qrcode/encoder/ByteMatrix;)V"/>
 <method name="isValidMaskPattern" type="(I)Z" class_method="true"/>
 </class>
+<class name="com/google/zxing/qrcode/QRCodeReader">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="getDecoder" type="()Lcom/google/zxing/qrcode/decoder/Decoder;"/>
+<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
+<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
+<method name="reset" type="()V"/>
+</class>
+<class name="com/google/zxing/qrcode/QRCodeWriter">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;II)Lcom/google/zxing/common/BitMatrix;"/>
+<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;IILjava/util/Map;)Lcom/google/zxing/common/BitMatrix;"/>
+</class>
+<class name="com/google/zxing/ReaderException">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="fillInStackTrace" type="()Ljava/lang/Throwable;"/>
+</class>
 <class name="com/google/zxing/Result">
 <method name="&lt;init&gt;" type="(Ljava/lang/String;[B[Lcom/google/zxing/ResultPoint;Lcom/google/zxing/BarcodeFormat;)V"/>
 <method name="&lt;init&gt;" type="(Ljava/lang/String;[B[Lcom/google/zxing/ResultPoint;Lcom/google/zxing/BarcodeFormat;J)V"/>
@@ -1525,6 +1712,10 @@
 <method name="getTimestamp" type="()J"/>
 <method name="toString" type="()Ljava/lang/String;"/>
 </class>
+<class name="com/google/zxing/ResultMetadataType">
+<method name="values" type="()[Lcom/google/zxing/ResultMetadataType;" class_method="true"/>
+<method name="valueOf" type="(Ljava/lang/String;)Lcom/google/zxing/ResultMetadataType;" class_method="true"/>
+</class>
 <class name="com/google/zxing/ResultPoint">
 <method name="&lt;init&gt;" type="(FF)V"/>
 <method name="getX" type="()F"/>
@@ -1534,6 +1725,18 @@
 <method name="toString" type="()Ljava/lang/String;"/>
 <method name="orderBestPatterns" type="([Lcom/google/zxing/ResultPoint;)V" class_method="true"/>
 <method name="distance" type="(Lcom/google/zxing/ResultPoint;Lcom/google/zxing/ResultPoint;)F" class_method="true"/>
+</class>
+<class name="com/google/zxing/RGBLuminanceSource">
+<method name="&lt;init&gt;" type="(II[I)V"/>
+<method name="getRow" type="(I[B)[B"/>
+<method name="getMatrix" type="()[B"/>
+<method name="isCropSupported" type="()Z"/>
+<method name="crop" type="(IIII)Lcom/google/zxing/LuminanceSource;"/>
+</class>
+<class name="com/google/zxing/WriterException">
+<method name="&lt;init&gt;" type="()V"/>
+<method name="&lt;init&gt;" type="(Ljava/lang/String;)V"/>
+<method name="&lt;init&gt;" type="(Ljava/lang/Throwable;)V"/>
 </class>
 <interface name="com/google/zxing/datamatrix/encoder/Encoder">
 <method name="getEncodingMode" type="()I"/>
@@ -1555,207 +1758,4 @@
 <method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;II)Lcom/google/zxing/common/BitMatrix;"/>
 <method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;IILjava/util/Map;)Lcom/google/zxing/common/BitMatrix;"/>
 </interface>
-<class name="com/google/zxing/aztec/AztecReader">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
-<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
-<method name="reset" type="()V"/>
-</class>
-<class name="com/google/zxing/aztec/AztecWriter">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;II)Lcom/google/zxing/common/BitMatrix;"/>
-<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;IILjava/util/Map;)Lcom/google/zxing/common/BitMatrix;"/>
-</class>
-<class name="com/google/zxing/aztec/encoder/HighLevelEncoder$1">
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/aztec/encoder/HighLevelEncoder;)V"/>
-<method name="compare" type="(Lcom/google/zxing/aztec/encoder/State;Lcom/google/zxing/aztec/encoder/State;)I"/>
-<method name="compare" type="(Ljava/lang/Object;Ljava/lang/Object;)I"/>
-</class>
-<class name="com/google/zxing/common/BitArray">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="&lt;init&gt;" type="(I)V"/>
-<method name="&lt;init&gt;" type="([II)V"/>
-<method name="getSize" type="()I"/>
-<method name="getSizeInBytes" type="()I"/>
-<method name="get" type="(I)Z"/>
-<method name="set" type="(I)V"/>
-<method name="flip" type="(I)V"/>
-<method name="getNextSet" type="(I)I"/>
-<method name="getNextUnset" type="(I)I"/>
-<method name="setBulk" type="(II)V"/>
-<method name="setRange" type="(II)V"/>
-<method name="clear" type="()V"/>
-<method name="isRange" type="(IIZ)Z"/>
-<method name="appendBit" type="(Z)V"/>
-<method name="appendBits" type="(II)V"/>
-<method name="appendBitArray" type="(Lcom/google/zxing/common/BitArray;)V"/>
-<method name="xor" type="(Lcom/google/zxing/common/BitArray;)V"/>
-<method name="toBytes" type="(I[BII)V"/>
-<method name="getBitArray" type="()[I"/>
-<method name="reverse" type="()V"/>
-<method name="equals" type="(Ljava/lang/Object;)Z"/>
-<method name="hashCode" type="()I"/>
-<method name="toString" type="()Ljava/lang/String;"/>
-<method name="clone" type="()Lcom/google/zxing/common/BitArray;"/>
-<method name="clone" type="()Ljava/lang/Object;"/>
-</class>
-<class name="com/google/zxing/common/BitMatrix">
-<method name="&lt;init&gt;" type="(I)V"/>
-<method name="&lt;init&gt;" type="(II)V"/>
-<method name="get" type="(II)Z"/>
-<method name="set" type="(II)V"/>
-<method name="flip" type="(II)V"/>
-<method name="clear" type="()V"/>
-<method name="setRegion" type="(IIII)V"/>
-<method name="getRow" type="(ILcom/google/zxing/common/BitArray;)Lcom/google/zxing/common/BitArray;"/>
-<method name="setRow" type="(ILcom/google/zxing/common/BitArray;)V"/>
-<method name="rotate180" type="()V"/>
-<method name="getEnclosingRectangle" type="()[I"/>
-<method name="getTopLeftOnBit" type="()[I"/>
-<method name="getBottomRightOnBit" type="()[I"/>
-<method name="getWidth" type="()I"/>
-<method name="getHeight" type="()I"/>
-<method name="equals" type="(Ljava/lang/Object;)Z"/>
-<method name="hashCode" type="()I"/>
-<method name="toString" type="()Ljava/lang/String;"/>
-<method name="clone" type="()Lcom/google/zxing/common/BitMatrix;"/>
-<method name="clone" type="()Ljava/lang/Object;"/>
-</class>
-<class name="com/google/zxing/datamatrix/DataMatrixReader">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
-<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
-<method name="reset" type="()V"/>
-</class>
-<class name="com/google/zxing/datamatrix/DataMatrixWriter">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;II)Lcom/google/zxing/common/BitMatrix;"/>
-<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;IILjava/util/Map;)Lcom/google/zxing/common/BitMatrix;"/>
-</class>
-<class name="com/google/zxing/datamatrix/detector/Detector$ResultPointsAndTransitionsComparator">
-<method name="compare" type="(Lcom/google/zxing/datamatrix/detector/Detector$ResultPointsAndTransitions;Lcom/google/zxing/datamatrix/detector/Detector$ResultPointsAndTransitions;)I"/>
-<method name="compare" type="(Ljava/lang/Object;Ljava/lang/Object;)I"/>
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/datamatrix/detector/Detector$1;)V"/>
-</class>
-<class name="com/google/zxing/datamatrix/encoder/ASCIIEncoder">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="getEncodingMode" type="()I"/>
-<method name="encode" type="(Lcom/google/zxing/datamatrix/encoder/EncoderContext;)V"/>
-</class>
-<class name="com/google/zxing/datamatrix/encoder/Base256Encoder">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="getEncodingMode" type="()I"/>
-<method name="encode" type="(Lcom/google/zxing/datamatrix/encoder/EncoderContext;)V"/>
-</class>
-<class name="com/google/zxing/datamatrix/encoder/C40Encoder">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="getEncodingMode" type="()I"/>
-<method name="encode" type="(Lcom/google/zxing/datamatrix/encoder/EncoderContext;)V"/>
-<method name="writeNextTriplet" type="(Lcom/google/zxing/datamatrix/encoder/EncoderContext;Ljava/lang/StringBuilder;)V" class_method="true"/>
-<method name="handleEOD" type="(Lcom/google/zxing/datamatrix/encoder/EncoderContext;Ljava/lang/StringBuilder;)V"/>
-<method name="encodeChar" type="(CLjava/lang/StringBuilder;)I"/>
-</class>
-<class name="com/google/zxing/datamatrix/encoder/EdifactEncoder">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="getEncodingMode" type="()I"/>
-<method name="encode" type="(Lcom/google/zxing/datamatrix/encoder/EncoderContext;)V"/>
-</class>
-<class name="com/google/zxing/maxicode/MaxiCodeReader">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
-<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
-<method name="reset" type="()V"/>
-</class>
-<class name="com/google/zxing/multi/ByQuadrantReader">
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/Reader;)V"/>
-<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
-<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
-<method name="reset" type="()V"/>
-</class>
-<class name="com/google/zxing/multi/GenericMultipleBarcodeReader">
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/Reader;)V"/>
-<method name="decodeMultiple" type="(Lcom/google/zxing/BinaryBitmap;)[Lcom/google/zxing/Result;"/>
-<method name="decodeMultiple" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)[Lcom/google/zxing/Result;"/>
-</class>
-<class name="com/google/zxing/multi/qrcode/detector/MultiFinderPatternFinder$ModuleSizeComparator">
-<method name="compare" type="(Lcom/google/zxing/qrcode/detector/FinderPattern;Lcom/google/zxing/qrcode/detector/FinderPattern;)I"/>
-<method name="compare" type="(Ljava/lang/Object;Ljava/lang/Object;)I"/>
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/multi/qrcode/detector/MultiFinderPatternFinder$1;)V"/>
-</class>
-<class name="com/google/zxing/multi/qrcode/QRCodeMultiReader$SAComparator">
-<method name="compare" type="(Lcom/google/zxing/Result;Lcom/google/zxing/Result;)I"/>
-<method name="compare" type="(Ljava/lang/Object;Ljava/lang/Object;)I"/>
-<method name="&lt;init&gt;" type="(Lcom/google/zxing/multi/qrcode/QRCodeMultiReader$1;)V"/>
-</class>
-<class name="com/google/zxing/MultiFormatReader">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
-<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
-<method name="decodeWithState" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
-<method name="setHints" type="(Ljava/util/Map;)V"/>
-<method name="reset" type="()V"/>
-</class>
-<class name="com/google/zxing/MultiFormatWriter">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;II)Lcom/google/zxing/common/BitMatrix;"/>
-<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;IILjava/util/Map;)Lcom/google/zxing/common/BitMatrix;"/>
-</class>
-<class name="com/google/zxing/oned/OneDimensionalCodeWriter">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;II)Lcom/google/zxing/common/BitMatrix;"/>
-<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;IILjava/util/Map;)Lcom/google/zxing/common/BitMatrix;"/>
-<method name="appendPattern" type="([ZI[IZ)I" class_method="true"/>
-<method name="getDefaultMargin" type="()I"/>
-<method name="encode" type="(Ljava/lang/String;)[Z"/>
-</class>
-<class name="com/google/zxing/oned/OneDReader">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
-<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
-<method name="reset" type="()V"/>
-<method name="recordPattern" type="(Lcom/google/zxing/common/BitArray;I[I)V" class_method="true"/>
-<method name="recordPatternInReverse" type="(Lcom/google/zxing/common/BitArray;I[I)V" class_method="true"/>
-<method name="patternMatchVariance" type="([I[IF)F" class_method="true"/>
-<method name="decodeRow" type="(ILcom/google/zxing/common/BitArray;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
-</class>
-<class name="com/google/zxing/oned/UPCAWriter">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;II)Lcom/google/zxing/common/BitMatrix;"/>
-<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;IILjava/util/Map;)Lcom/google/zxing/common/BitMatrix;"/>
-</class>
-<class name="com/google/zxing/pdf417/PDF417Reader">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
-<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
-<method name="decodeMultiple" type="(Lcom/google/zxing/BinaryBitmap;)[Lcom/google/zxing/Result;"/>
-<method name="decodeMultiple" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)[Lcom/google/zxing/Result;"/>
-<method name="reset" type="()V"/>
-</class>
-<class name="com/google/zxing/pdf417/PDF417Writer">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;IILjava/util/Map;)Lcom/google/zxing/common/BitMatrix;"/>
-<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;II)Lcom/google/zxing/common/BitMatrix;"/>
-</class>
-<class name="com/google/zxing/qrcode/detector/FinderPatternFinder$CenterComparator">
-<method name="compare" type="(Lcom/google/zxing/qrcode/detector/FinderPattern;Lcom/google/zxing/qrcode/detector/FinderPattern;)I"/>
-<method name="compare" type="(Ljava/lang/Object;Ljava/lang/Object;)I"/>
-<method name="&lt;init&gt;" type="(FLcom/google/zxing/qrcode/detector/FinderPatternFinder$1;)V"/>
-</class>
-<class name="com/google/zxing/qrcode/detector/FinderPatternFinder$FurthestFromAverageComparator">
-<method name="compare" type="(Lcom/google/zxing/qrcode/detector/FinderPattern;Lcom/google/zxing/qrcode/detector/FinderPattern;)I"/>
-<method name="compare" type="(Ljava/lang/Object;Ljava/lang/Object;)I"/>
-<method name="&lt;init&gt;" type="(FLcom/google/zxing/qrcode/detector/FinderPatternFinder$1;)V"/>
-</class>
-<class name="com/google/zxing/qrcode/QRCodeReader">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="getDecoder" type="()Lcom/google/zxing/qrcode/decoder/Decoder;"/>
-<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;)Lcom/google/zxing/Result;"/>
-<method name="decode" type="(Lcom/google/zxing/BinaryBitmap;Ljava/util/Map;)Lcom/google/zxing/Result;"/>
-<method name="reset" type="()V"/>
-</class>
-<class name="com/google/zxing/qrcode/QRCodeWriter">
-<method name="&lt;init&gt;" type="()V"/>
-<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;II)Lcom/google/zxing/common/BitMatrix;"/>
-<method name="encode" type="(Ljava/lang/String;Lcom/google/zxing/BarcodeFormat;IILjava/util/Map;)Lcom/google/zxing/common/BitMatrix;"/>
-</class>
 </signatures>
